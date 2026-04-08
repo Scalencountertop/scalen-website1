@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scalen Countertops | Showcase Edition</title>
+  <meta name="description" content="Premium countertop showcase for Scalen Countertops in Jacksonville." />
+  <style>
+    :root{
+      --bg:#f5f2eb;
+      --paper:#fbfaf7;
+      --text:#111111;
+      --muted:#6c675f;
+      --line:#e8e0d4;
+      --gold:#b28a45;
+      --dark:#111111;
+      --container:1240px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:radial-gradient(circle at top left, rgba(178,138,69,.08), transparent 18%), var(--bg);
+      color:var(--text);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height:1.5;
+    }
+    img{display:block;width:100%}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(var(--container), calc(100% - 34px));margin:0 auto}
+
+    .nav{
+      position:sticky;top:0;z-index:30;
+      backdrop-filter:blur(14px);
+      background:rgba(245,242,235,.76);
+      border-bottom:1px solid rgba(17,17,17,.06);
+    }
+    .nav-inner{
+      display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 0;
+    }
+    .brand{display:flex;flex-direction:column;line-height:1;gap:5px}
+    .brand span{
+      font-size:11px;text-transform:uppercase;letter-spacing:.22em;color:var(--gold);font-weight:700;
+    }
+    .brand strong{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:32px;font-weight:700;letter-spacing:-.03em;
+    }
+    .nav-links{display:flex;align-items:center;gap:22px;font-size:14px;color:var(--muted)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:14px 22px;border-radius:999px;font-weight:700;border:1px solid transparent;
+      transition:.22s ease;white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn-dark{background:var(--dark);color:#fff}
+    .btn-soft{background:rgba(178,138,69,.10);border-color:rgba(178,138,69,.18)}
+
+    h1,h2{
+      font-family:Georgia, "Times New Roman", serif;
+      letter-spacing:-.045em;
+      font-weight:700;
+      margin:0;
+    }
+    .hero{padding:26px 0 18px}
+    .hero-grid{
+      display:grid;grid-template-columns:.85fr 1.15fr;gap:18px;align-items:stretch;
+    }
+    .hero-copy{
+      background:rgba(251,250,247,.86);
+      border:1px solid var(--line);
+      border-radius:34px;
+      padding:48px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      box-shadow:0 18px 54px rgba(0,0,0,.04);
+    }
+    .eyebrow{
+      display:inline-flex;width:fit-content;
+      padding:8px 13px;border-radius:999px;
+      background:rgba(178,138,69,.10);
+      color:#89692d;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+      margin-bottom:18px;
+    }
+    .hero-copy h1{
+      font-size:clamp(44px, 6.8vw, 88px);
+      line-height:.9;
+      max-width:6.7ch;
+      margin-bottom:14px;
+    }
+    .hero-copy p{
+      margin:0 0 26px;
+      color:var(--muted);
+      font-size:18px;
+      max-width:34ch;
+    }
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-image{
+      min-height:760px;border-radius:34px;overflow:hidden;position:relative;
+      box-shadow:0 34px 80px rgba(0,0,0,.12);
+    }
+    .hero-image img{height:100%;object-fit:cover}
+    .hero-note{
+      position:absolute;left:20px;bottom:20px;
+      background:rgba(255,255,255,.84);
+      border:1px solid rgba(17,17,17,.08);
+      backdrop-filter:blur(10px);
+      border-radius:999px;
+      padding:11px 14px;
+      font-size:12px;font-weight:700;
+    }
+
+    section{padding:20px 0}
+    .section-head{
+      display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:18px;
+    }
+    .section-head h2{
+      font-size:clamp(30px, 4vw, 52px);
+      line-height:.96;
+    }
+    .section-head p{margin:0;color:var(--muted);max-width:40ch}
+
+    .masonry{
+      display:grid;
+      grid-template-columns:1.08fr .92fr .92fr;
+      gap:16px;
+      grid-auto-rows:220px;
+    }
+    .card{
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      background:#ddd;
+      box-shadow:0 14px 36px rgba(0,0,0,.05);
+    }
+    .card img{height:100%;object-fit:cover;transition:transform .35s ease}
+    .card:hover img{transform:scale(1.03)}
+    .tall{grid-row:span 2}
+    .xl{grid-row:span 3}
+    .wide{grid-column:span 2}
+    .label{
+      position:absolute;left:16px;bottom:16px;
+      background:rgba(17,17,17,.78);color:#fff;
+      padding:10px 12px;border-radius:999px;font-size:12px;font-weight:700;
+      backdrop-filter:blur(8px);
+    }
+
+    .split{
+      display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch;
+    }
+    .quote-box{
+      background:var(--paper);border:1px solid var(--line);border-radius:30px;
+      padding:34px;display:flex;flex-direction:column;justify-content:center;
+    }
+    .quote-box h2{font-size:clamp(30px, 4vw, 52px);line-height:.95;margin-bottom:12px}
+    .quote-box p{margin:0 0 22px;color:var(--muted);max-width:34ch}
+    .contact-row{display:flex;gap:12px;flex-wrap:wrap}
+
+    .footer{padding:8px 0 34px;color:var(--muted);font-size:14px}
+    .footer-line{
+      border-top:1px solid rgba(17,17,17,.08);
+      padding-top:18px;
+      display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    }
+
+    @media (max-width: 1024px){
+      .hero-grid,.split,.masonry{grid-template-columns:1fr}
+      .hero-image{min-height:420px}
+      .masonry{grid-auto-rows:260px}
+      .xl,.tall,.wide{grid-row:span 1;grid-column:span 1}
+    }
+    @media (max-width: 720px){
+      .hero-copy{padding:30px}
+      .nav-links a:not(.btn){display:none}
+      .hero-copy h1{max-width:none}
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <span>Jacksonville, Florida</span>
+        <strong>Scalen Countertops</strong>
+      </a>
+      <nav class="nav-links">
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-dark" href="https://wa.me/19049215057" target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Showcase Edition</div>
+          <h1>Less text. More impact.</h1>
+          <p>Premium granite, quartz, and quartzite surfaces presented with a cleaner, image-first layout.</p>
+          <div class="hero-actions">
+            <a class="btn btn-dark" href="#contact">Request a Quote</a>
+            <a class="btn btn-soft" href="tel:+19049215057">Call (904) 921-5057</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="assets/tile-2.png" alt="Luxury kitchen countertop" />
+          <div class="hero-note">Custom fabrication & installation</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <h2>Image-first gallery</h2>
+          <p>A premium storefront feel with much stronger visual emphasis.</p>
+        </div>
+        <div class="masonry">
+          <div class="card xl"><img src="assets/tile-1.png" alt="Kitchen countertop design"><div class="label">Kitchen</div></div>
+          <div class="card tall"><img src="assets/tile-3.png" alt="Granite countertop"><div class="label">Granite</div></div>
+          <div class="card tall"><img src="assets/tile-4.png" alt="Quartz countertop"><div class="label">Quartz</div></div>
+          <div class="card wide"><img src="assets/tile-5.png" alt="Bathroom vanity"><div class="label">Bathroom Vanities</div></div>
+          <div class="card"><img src="assets/tile-6.png" alt="Quartzite inspiration"><div class="label">Quartzite</div></div>
+          <div class="card"><img src="assets/tile-7.png" alt="Luxury countertop finish"><div class="label">Premium Finish</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container split">
+        <div class="card" style="min-height:460px;">
+          <img src="assets/tile-8.png" alt="Countertop project detail">
+          <div class="label">Modern surfaces</div>
+        </div>
+        <div class="quote-box" id="contact">
+          <h2>Start your project.</h2>
+          <p>Use WhatsApp, call, or email to request a quote with a simpler and more premium presentation.</p>
+          <div class="contact-row">
+            <a class="btn btn-dark" href="https://wa.me/19049215057" target="_blank" rel="noopener">WhatsApp Us</a>
+            <a class="btn btn-soft" href="mailto:info@scalencountertops.com">Email Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-line">
+      <div>Scalen Countertops</div>
+      <div>(904) 921-5057 · info@scalencountertops.com</div>
+    </div>
+  </footer>
+</body>
+</html>
