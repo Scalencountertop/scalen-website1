@@ -2,535 +2,222 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Scalen Countertops | Luxury Countertops in Jacksonville</title>
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <meta name="description" content="Luxury granite, quartz, and quartzite countertops in Jacksonville. Free estimates, custom fabrication, and professional installation." />
+
+  <link rel="icon" type="image/png" href="assets/favicon.png"/>
+
   <style>
-    :root{
-      --bg:#ffffff;
-      --paper:#ffffff;
-      --text:#121212;
-      --muted:#6e6e6e;
-      --line:#ece9e3;
-      --gold:#b18a46;
-      --dark:#121212;
-      --container:1240px;
-      --radius:28px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height:1.5;
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
-    }
-    img{display:block;width:100%}
-    a{text-decoration:none;color:inherit}
-    .container{width:min(var(--container), calc(100% - 40px));margin:0 auto}
-    h1,h2,h3{
-      font-family:Georgia, "Times New Roman", serif;
-      letter-spacing:-.045em;
-      font-weight:700;
-      margin:0;
-    }
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:14px 22px;border-radius:999px;font-weight:700;border:1px solid transparent;
-      transition:.2s ease;white-space:nowrap;font-size:15px;
-    }
-    .btn:hover{transform:translateY(-1px)}
-    .btn-dark{background:var(--dark);color:#fff}
-    .btn-soft{background:#fff;border-color:rgba(18,18,18,.12);color:var(--text)}
-    .nav{
-      position:sticky;top:0;z-index:30;
-      background:rgba(255,255,255,.88);
-      backdrop-filter:blur(14px);
-      border-bottom:1px solid rgba(18,18,18,.06);
-    }
-    .nav-inner{
-      display:flex;align-items:center;justify-content:space-between;gap:20px;
-      padding:18px 0;
-    }
-    .brand-logo{display:flex;align-items:center}
-    .brand-logo img{height:54px;width:auto;display:block}
-    .nav-links{
-      display:flex;align-items:center;gap:26px;
-      color:var(--muted);font-size:14px;
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: #ffffff;
+      color: #111;
     }
 
-    .hero{padding:42px 0 30px}
-    .hero-grid{
-      display:grid;
-      grid-template-columns:.84fr 1.16fr;
-      gap:28px;
-      align-items:center;
-    }
-    .hero-copy{
-      padding:10px 6px 10px 2px;
-    }
-    .eyebrow{
-      display:inline-flex;width:fit-content;
-      color:var(--gold);
-      text-transform:uppercase;
-      letter-spacing:.20em;
-      font-size:11px;
-      font-weight:800;
-      margin-bottom:18px;
-    }
-    h1{
-      font-size:clamp(46px, 6.5vw, 88px);
-      line-height:.9;
-      max-width:7ch;
-      margin-bottom:18px;
-    }
-    .hero-copy p{
-      margin:0 0 28px;
-      color:var(--muted);
-      font-size:18px;
-      max-width:34ch;
-    }
-    .hero-actions{
-      display:flex;gap:12px;flex-wrap:wrap;
-      margin-bottom:34px;
-    }
-    .hero-meta{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
-      padding-top:26px;border-top:1px solid var(--line);
-    }
-    .hero-meta strong{
-      display:block;
-      font-size:14px;
-      margin-bottom:4px;
-      letter-spacing:.01em;
-    }
-    .hero-meta span{
-      color:var(--muted);
-      font-size:13px;
-    }
-    .hero-image{
-      overflow:hidden;
-      border-radius:34px;
-      min-height:760px;
-      background:#f5f5f5;
-    }
-    .hero-image img{
-      height:100%;
-      object-fit:cover;
+    h1, h2, h3 {
+      font-family: Georgia, serif;
+      margin: 0;
     }
 
-    section{padding:34px 0}
-    .section-head{
-      display:flex;justify-content:space-between;align-items:end;gap:16px;
-      margin-bottom:22px;
-    }
-    .section-head h2{
-      font-size:clamp(32px,4vw,52px);
-      line-height:.96;
-    }
-    .section-head p{
-      margin:0;
-      color:var(--muted);
-      max-width:40ch;
-      font-size:15px;
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
     }
 
-    .gallery{
-      display:grid;
-      grid-template-columns:1.06fr .94fr .94fr;
-      gap:18px;
-      grid-auto-rows:230px;
-    }
-    .card{
-      position:relative;
-      overflow:hidden;
-      border-radius:28px;
-      background:#f4f4f4;
-    }
-    .card img{
-      height:100%;
-      object-fit:cover;
-      transition:transform .35s ease;
-    }
-    .card:hover img{transform:scale(1.025)}
-    .xl{grid-row:span 3}
-    .tall{grid-row:span 2}
-    .wide{grid-column:span 2}
-    .label{
-      position:absolute;left:16px;bottom:16px;
-      background:rgba(255,255,255,.88);
-      border:1px solid rgba(18,18,18,.08);
-      color:var(--text);
-      padding:10px 12px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:700;
-      backdrop-filter:blur(10px);
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid #eee;
     }
 
-    .value-row{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
-      padding-top:4px;
-    }
-    .value{
-      padding:22px 0 0;
-      border-top:1px solid var(--line);
-    }
-    .value strong{
-      display:block;
-      font-size:15px;
-      margin-bottom:6px;
-    }
-    .value span{
-      color:var(--muted);
-      font-size:14px;
+    header img {
+      height: 50px;
     }
 
-    .services{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
-    }
-    .service{
-      padding:30px 0 0;
-      border-top:1px solid var(--line);
-    }
-    .service h3{
-      font-size:25px;
-      margin-bottom:10px;
-    }
-    .service p{
-      margin:0;
-      color:var(--muted);
-      max-width:28ch;
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #555;
+      font-size: 14px;
     }
 
-    .proof{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
-    }
-    .review{
-      padding:26px 0 0;
-      border-top:1px solid var(--line);
-    }
-    .stars{
-      color:var(--gold);
-      font-size:18px;
-      letter-spacing:2px;
-      margin-bottom:10px;
-    }
-    .review p{
-      margin:0 0 10px;
-      color:var(--muted);
-    }
-    .review strong{
-      font-size:14px;
+    .btn {
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
     }
 
-    .split{
-      display:grid;grid-template-columns:1fr 1fr;gap:26px;
-      align-items:start;
-    }
-    .clean-box{
-      padding:0;
-    }
-    .clean-box h2{
-      font-size:clamp(32px,4vw,50px);
-      line-height:.96;
-      margin-bottom:14px;
-    }
-    .clean-box p{
-      margin:0 0 18px;
-      color:var(--muted);
-      max-width:36ch;
-    }
-    .mini-list{
-      display:grid;gap:10px;
-      color:var(--muted);
-      font-size:15px;
-    }
-    .quote-panel{
-      border:1px solid var(--line);
-      border-radius:28px;
-      padding:28px;
-      background:#fff;
-    }
-    .quote-panel h2{
-      font-size:clamp(30px,4vw,46px);
-      line-height:.96;
-      margin-bottom:12px;
-    }
-    .quote-panel p{
-      margin:0 0 18px;
-      color:var(--muted);
-      max-width:34ch;
-    }
-    .form{
-      display:grid;grid-template-columns:1fr 1fr;gap:12px;
-    }
-    .full{grid-column:1/-1}
-    .field{
-      width:100%;
-      padding:14px 16px;
-      border-radius:16px;
-      border:1px solid var(--line);
-      background:#fff;
-      font:inherit;
-      color:var(--text);
+    .btn-dark {
+      background: #111;
+      color: #fff;
     }
 
-    .cta{
-      border-top:1px solid var(--line);
-      padding-top:34px;
-      display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;
-    }
-    .cta h2{
-      font-size:clamp(32px,4vw,50px);
-      line-height:.96;
-    }
-    .cta p{
-      margin:10px 0 0;
-      color:var(--muted);
+    .btn-light {
+      border: 1px solid #ccc;
     }
 
-    .footer{
-      padding:26px 0 36px;
-      color:var(--muted);
-      font-size:14px;
-    }
-    .footer-line{
-      border-top:1px solid var(--line);
-      padding-top:18px;
-      display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      padding: 60px 0;
+      align-items: center;
     }
 
-    .floating-wa{
-      position:fixed;right:18px;bottom:18px;z-index:40;
-      background:#111;color:#fff;border-radius:999px;
-      padding:14px 18px;font-weight:800;
+    .hero img {
+      width: 100%;
+      border-radius: 20px;
     }
 
-    @media (max-width:1024px){
-      .hero-grid,.gallery,.value-row,.services,.proof,.split,.form,.hero-meta{
-        grid-template-columns:1fr;
+    .section {
+      padding: 60px 0;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 15px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid #eee;
+      font-size: 14px;
+      color: #666;
+    }
+
+    @media(max-width: 900px){
+      .hero, .gallery, .services, .reviews {
+        grid-template-columns: 1fr;
       }
-      .hero-image{min-height:430px}
-      .gallery{grid-auto-rows:260px}
-      .xl,.tall,.wide{grid-row:span 1;grid-column:span 1}
-      h1{max-width:none}
-    }
-    @media (max-width:720px){
-      .container{width:min(var(--container), calc(100% - 28px))}
-      .nav-links a:not(.btn){display:none}
-      .brand-logo img{height:42px}
-      .hero{padding-top:28px}
-      .floating-wa{left:14px;right:14px;bottom:14px;text-align:center}
     }
   </style>
 </head>
+
 <body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <a href="#top" class="brand-logo" aria-label="Scalen Countertops home">
-        <img src="assets/logo.png" alt="Scalen Countertops logo" />
-      </a>
-      <nav class="nav-links">
-        <a href="#gallery">Gallery</a>
-        <a href="#services">Services</a>
-        <a href="#quote">Get Quote</a>
-        <a class="btn btn-dark" href="https://wa.me/19049215057?text=Hi%20I%20would%20like%20a%20quote%20for%20countertops" target="_blank" rel="noopener">WhatsApp</a>
-      </nav>
+
+<header class="container">
+  <img src="assets/logo.png" alt="logo">
+  <nav>
+    <a href="#gallery">Gallery</a>
+    <a href="#services">Services</a>
+    <a href="#quote">Quote</a>
+    <a class="btn btn-dark" href="https://wa.me/19049215057?text=Hi%20I%20would%20like%20a%20quote%20for%20countertops">WhatsApp</a>
+  </nav>
+</header>
+
+<section class="container hero">
+  <div>
+    <h1>Luxury Countertops in Jacksonville</h1>
+    <p>Custom granite, quartz, and quartzite. Premium fabrication and professional installation.</p>
+
+    <br>
+
+    <a class="btn btn-dark" href="#quote">Get a Free Quote</a>
+    <a class="btn btn-light" href="https://wa.me/19049215057?text=Hi%20I%20would%20like%20a%20quote%20for%20countertops">WhatsApp Now</a>
+  </div>
+
+  <img src="assets/tile-2.png">
+</section>
+
+<section class="container section" id="gallery">
+  <h2>Our Work</h2>
+  <br><br>
+
+  <div class="gallery">
+    <img src="assets/tile-1.png">
+    <img src="assets/tile-3.png">
+    <img src="assets/tile-4.png">
+    <img src="assets/tile-5.png">
+    <img src="assets/tile-6.png">
+    <img src="assets/tile-7.png">
+  </div>
+</section>
+
+<section class="container section">
+  <h2>Why Choose Us</h2>
+  <br><br>
+
+  <ul>
+    <li>Premium materials</li>
+    <li>Custom fabrication</li>
+    <li>Fast response</li>
+    <li>Professional installation</li>
+  </ul>
+</section>
+
+<section class="container section" id="services">
+  <h2>Services</h2>
+  <br><br>
+
+  <div class="services">
+    <div>
+      <h3>Kitchen Countertops</h3>
+      <p>Premium surfaces for modern kitchens.</p>
     </div>
-  </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">Luxury clean design</div>
-          <h1>Premium countertops in Jacksonville</h1>
-          <p>Custom granite, quartz, and quartzite. Clean execution, premium finish, and fast quote response.</p>
-          <div class="hero-actions">
-            <a class="btn btn-dark" href="#quote">Get a Free Quote</a>
-            <a class="btn btn-soft" href="https://wa.me/19049215057?text=Hi%20I%20would%20like%20a%20quote%20for%20countertops" target="_blank" rel="noopener">WhatsApp Now</a>
-          </div>
-          <div class="hero-meta">
-            <div><strong>Granite</strong><span>Natural movement and durable performance</span></div>
-            <div><strong>Quartz</strong><span>Bright, refined, and low maintenance</span></div>
-            <div><strong>Quartzite</strong><span>Luxury stone with stronger visual impact</span></div>
-          </div>
-        </div>
-        <div class="hero-image">
-          <img src="assets/tile-2.png" alt="Luxury kitchen countertop in Jacksonville" />
-        </div>
-      </div>
-    </section>
-
-    <section id="gallery">
-      <div class="container">
-        <div class="section-head">
-          <h2>Image-first presentation</h2>
-          <p>A more sophisticated visual language: more white space, lighter structure, and stronger photography.</p>
-        </div>
-        <div class="gallery">
-          <div class="card xl"><img src="assets/tile-1.png" alt="Custom kitchen countertop project"><div class="label">Custom Kitchen Project</div></div>
-          <div class="card tall"><img src="assets/tile-3.png" alt="Black premium granite"><div class="label">Granite · Black Premium</div></div>
-          <div class="card tall"><img src="assets/tile-4.png" alt="Calacatta style quartz"><div class="label">Quartz · Calacatta Style</div></div>
-          <div class="card wide"><img src="assets/tile-5.png" alt="Bathroom vanity countertop"><div class="label">Bathroom Vanity</div></div>
-          <div class="card"><img src="assets/tile-6.png" alt="Quartzite surface"><div class="label">Quartzite</div></div>
-          <div class="card"><img src="assets/tile-7.png" alt="Premium finish countertop"><div class="label">Premium Finish</div></div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="section-head">
-          <h2>Why homeowners choose Scalen</h2>
-          <p>Keeping the conversion structure, but presenting it in a cleaner and more architectural way.</p>
-        </div>
-        <div class="value-row">
-          <div class="value"><strong>Premium materials</strong><span>Granite, quartz, and quartzite with elevated visual appeal.</span></div>
-          <div class="value"><strong>Custom fabrication</strong><span>Precise work tailored to the layout and finish you need.</span></div>
-          <div class="value"><strong>Fast response</strong><span>Simple quote process with direct WhatsApp contact.</span></div>
-          <div class="value"><strong>Professional installation</strong><span>Clean, reliable execution with a polished final presentation.</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="services">
-      <div class="container">
-        <div class="section-head">
-          <h2>Services</h2>
-          <p>Shorter, cleaner copy that feels more premium without losing clarity.</p>
-        </div>
-        <div class="services">
-          <div class="service">
-            <h3>Kitchen Countertops</h3>
-            <p>Upgrade your kitchen with a premium, durable surface designed to impress.</p>
-          </div>
-          <div class="service">
-            <h3>Custom Fabrication</h3>
-            <p>Precision cutting for a perfect fit and a refined final finish.</p>
-          </div>
-          <div class="service">
-            <h3>Installation</h3>
-            <p>Clean, fast, and professional installation you can trust.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="section-head">
-          <h2>What clients notice</h2>
-          <p>Simple proof still matters. It supports trust without making the page feel crowded.</p>
-        </div>
-        <div class="proof">
-          <div class="review">
-            <div class="stars">★★★★★</div>
-            <p>Excellent work, fast installation, and great communication throughout the process.</p>
-            <strong>Jacksonville, FL</strong>
-          </div>
-          <div class="review">
-            <div class="stars">★★★★★</div>
-            <p>Very professional and high-quality finish. The kitchen looks amazing.</p>
-            <strong>Northeast Florida</strong>
-          </div>
-          <div class="review">
-            <div class="stars">★★★★★</div>
-            <p>Great experience from quote to installation. Reliable team and beautiful result.</p>
-            <strong>Residential Project</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="quote">
-      <div class="container split">
-        <div class="clean-box">
-          <h2>Serving Jacksonville and surrounding areas</h2>
-          <p>Luxury clean presentation with a direct quote path, built to work for organic traffic and Google Ads.</p>
-          <div class="mini-list">
-            <div>Jacksonville, FL</div>
-            <div>Orange Park, FL</div>
-            <div>Ponte Vedra, FL</div>
-            <div>St. Augustine, FL</div>
-            <div>Fernandina Beach, FL</div>
-            <div>Fleming Island, FL</div>
-            <div>Saint Johns, FL</div>
-            <div>Nocatee, FL</div>
-          </div>
-        </div>
-        <div class="quote-panel">
-          <h2>Ready to upgrade your kitchen?</h2>
-          <p>Fill out the quick form and send your request directly to WhatsApp.</p>
-
-          <form id="quoteForm" class="form">
-            <input class="field" type="text" id="name" placeholder="Name" required />
-            <input class="field" type="tel" id="phone" placeholder="Phone" required />
-            <select class="field" id="project">
-              <option>Kitchen Countertops</option>
-              <option>Bathroom Vanity</option>
-              <option>Custom Project</option>
-            </select>
-            <select class="field" id="material">
-              <option>Granite</option>
-              <option>Quartz</option>
-              <option>Quartzite</option>
-              <option>Not sure yet</option>
-            </select>
-            <textarea class="field full" id="message" rows="4" placeholder="Tell us about your project"></textarea>
-            <button class="btn btn-dark full" type="submit">Send Quote Request via WhatsApp</button>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container cta">
-        <div>
-          <h2>Need a fast estimate?</h2>
-          <p>Call, email, or message us now and we will help you get started.</p>
-        </div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <a class="btn btn-soft" href="mailto:info@scalencountertops.com">info@scalencountertops.com</a>
-          <a class="btn btn-dark" href="tel:+19049215057">Call (904) 921-5057</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-line">
-      <div>Scalen Countertops</div>
-      <div>(904) 921-5057 · info@scalencountertops.com</div>
+    <div>
+      <h3>Custom Fabrication</h3>
+      <p>Perfect fit and finish.</p>
     </div>
-  </footer>
 
-  <a class="floating-wa" href="https://wa.me/19049215057?text=Hi%20I%20would%20like%20a%20quote%20for%20countertops" target="_blank" rel="noopener">WhatsApp for a Quote</a>
+    <div>
+      <h3>Installation</h3>
+      <p>Clean and professional.</p>
+    </div>
+  </div>
+</section>
 
-  <script>
-    document.getElementById('quoteForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const project = document.getElementById('project').value;
-      const material = document.getElementById('material').value;
-      const message = document.getElementById('message').value.trim();
+<section class="container section">
+  <h2>Reviews</h2>
+  <br><br>
 
-      const text =
-        "Hi, I would like a quote for countertops.\n\n" +
-        "Name: " + name + "\n" +
-        "Phone: " + phone + "\n" +
-        "Project: " + project + "\n" +
-        "Material: " + material + "\n" +
-        "Details: " + message;
+  <div class="reviews">
+    <div>★★★★★<br>Excellent work and fast installation.</div>
+    <div>★★★★★<br>Very professional team.</div>
+    <div>★★★★★<br>High-quality finish.</div>
+  </div>
+</section>
 
-      window.open("https://wa.me/19049215057?text=" + encodeURIComponent(text), "_blank");
-    });
-  </script>
+<section class="container section" id="quote">
+  <h2>Get a Quote</h2>
+  <br><br>
+
+  <form onsubmit="event.preventDefault(); window.open('https://wa.me/19049215057?text=Hi%20I%20want%20a%20quote');">
+    <input placeholder="Name" required><br><br>
+    <input placeholder="Phone" required><br><br>
+    <textarea placeholder="Project details"></textarea><br><br>
+    <button class="btn btn-dark">Send via WhatsApp</button>
+  </form>
+</section>
+
+<footer class="container">
+  Scalen Countertops — Jacksonville, FL<br>
+  (904) 921-5057 — info@scalencountertops.com
+</footer>
+
 </body>
 </html>
