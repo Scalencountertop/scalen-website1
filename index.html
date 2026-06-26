@@ -2,1242 +2,557 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scalen Countertops | Custom Surface, Built to Last</title>
-  <meta name="description" content="Premium granite, marble, quartz & porcelain countertops in Jacksonville, FL. Kitchen & bathroom remodels. Serving up to 200 miles. Call (904) 932-9591." />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-
-  <style>
-    /* ── TOKENS ─────────────────────────────────────────── */
-    :root {
-      --black:   #0a0a0a;
-      --dark:    #111111;
-      --card:    #1a1a1a;
-      --border:  #2a2a2a;
-      --gold:    #c9a84c;
-      --gold-lt: #e8c96a;
-      --gold-dk: #a07830;
-      --white:   #f5f0e8;
-      --muted:   #888880;
-      --radius:  4px;
-    }
-
-    /* ── RESET ───────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-
-    /* ── TYPOGRAPHY ──────────────────────────────────────── */
-    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1.15; }
-    h1 { font-size: clamp(2.8rem, 6vw, 5.2rem); }
-    h2 { font-size: clamp(2rem, 4vw, 3.2rem); }
-    h3 { font-size: 1.4rem; }
-    .eyebrow {
-      font-size: .72rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-    }
-
-    /* ── LAYOUT HELPERS ──────────────────────────────────── */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    section { padding: 100px 0; }
-    .section-header { text-align: center; margin-bottom: 64px; }
-    .section-header h2 { margin-top: 12px; }
-    .gold { color: var(--gold); }
-    .divider {
-      width: 48px; height: 1px;
-      background: var(--gold);
-      margin: 20px auto 0;
-    }
-
-    /* ── NAV ─────────────────────────────────────────────── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 0 40px;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 72px;
-      background: rgba(10,10,10,.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo img { height: 44px; }
-    .nav-logo-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      color: var(--gold);
-      font-weight: 600;
-      letter-spacing: .04em;
-    }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a {
-      font-size: .82rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      transition: color .2s;
-    }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-cta {
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      padding: 10px 22px;
-      font-size: .82rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background .2s, color .2s;
-      font-family: 'Inter', sans-serif;
-    }
-    .nav-cta:hover { background: var(--gold); color: var(--black); }
-
-    /* hamburger */
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-    .hamburger span { display: block; width: 24px; height: 1px; background: var(--white); transition: transform .3s, opacity .3s; }
-
-    /* ── HERO ────────────────────────────────────────────── */
-    #hero {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding-top: 72px;
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(135deg, rgba(10,10,10,.85) 40%, rgba(10,10,10,.5) 100%),
-        url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1800&q=80') center/cover no-repeat;
-    }
-    .hero-content {
-      position: relative; z-index: 1;
-      max-width: 680px;
-    }
-    .hero-content .eyebrow { margin-bottom: 20px; }
-    .hero-content h1 { margin-bottom: 24px; }
-    .hero-content h1 em { font-style: italic; color: var(--gold); }
-    .hero-content p {
-      font-size: 1.05rem;
-      color: rgba(245,240,232,.75);
-      max-width: 480px;
-      margin-bottom: 44px;
-    }
-    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--gold);
-      color: var(--black);
-      padding: 16px 36px;
-      font-size: .85rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      font-weight: 500;
-      border: none; cursor: pointer;
-      transition: background .2s;
-      font-family: 'Inter', sans-serif;
-    }
-    .btn-primary:hover { background: var(--gold-lt); }
-    .btn-outline {
-      background: transparent;
-      color: var(--white);
-      padding: 16px 36px;
-      font-size: .85rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      font-weight: 400;
-      border: 1px solid rgba(245,240,232,.4);
-      cursor: pointer;
-      transition: border-color .2s, color .2s;
-      font-family: 'Inter', sans-serif;
-    }
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-    .hero-badges {
-      position: relative; z-index: 1;
-      margin-top: 72px;
-      display: flex; gap: 48px; flex-wrap: wrap;
-    }
-    .hero-badge { }
-    .hero-badge .num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.4rem;
-      font-weight: 600;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .hero-badge .lbl {
-      font-size: .72rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 4px;
-    }
-
-    /* ── SERVICES ────────────────────────────────────────── */
-    #services { background: var(--dark); }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2px;
-    }
-    .service-card {
-      background: var(--card);
-      padding: 44px 36px;
-      border-top: 1px solid var(--border);
-      transition: border-color .3s;
-      position: relative;
-    }
-    .service-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .3s;
-    }
-    .service-card:hover::before { transform: scaleX(1); }
-    .service-icon {
-      width: 48px; height: 48px;
-      border: 1px solid var(--gold-dk);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 24px;
-      color: var(--gold);
-      font-size: 1.4rem;
-    }
-    .service-card h3 { margin-bottom: 12px; font-size: 1.25rem; }
-    .service-card p { font-size: .9rem; color: var(--muted); line-height: 1.7; }
-
-    /* ── GALLERY ─────────────────────────────────────────── */
-    #gallery { background: var(--black); }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: auto;
-      gap: 6px;
-    }
-    .gallery-grid .g1 { grid-column: span 7; aspect-ratio: 16/9; overflow: hidden; }
-    .gallery-grid .g2 { grid-column: span 5; aspect-ratio: 4/3;  overflow: hidden; }
-    .gallery-grid .g3 { grid-column: span 4; aspect-ratio: 4/3;  overflow: hidden; }
-    .gallery-grid .g4 { grid-column: span 4; aspect-ratio: 4/3;  overflow: hidden; }
-    .gallery-grid .g5 { grid-column: span 4; aspect-ratio: 4/3;  overflow: hidden; }
-    .gallery-grid div img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform .6s ease;
-      filter: brightness(.88) saturate(.9);
-    }
-    .gallery-grid div:hover img { transform: scale(1.04); filter: brightness(1) saturate(1); }
-
-    /* ── MATERIALS ───────────────────────────────────────── */
-    #materials { background: var(--dark); }
-    .materials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2px;
-    }
-    .material-card {
-      position: relative; overflow: hidden;
-      aspect-ratio: 3/4;
-      cursor: default;
-    }
-    .material-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
-    .material-card:hover img { transform: scale(1.06); }
-    .material-card .overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(10,10,10,.9) 30%, transparent 70%);
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 24px 20px;
-    }
-    .material-card .overlay h3 { font-size: 1.3rem; margin-bottom: 4px; }
-    .material-card .overlay p { font-size: .78rem; color: var(--muted); line-height: 1.5; }
-
-    /* ── PROCESS ─────────────────────────────────────────── */
-    #process { background: var(--black); }
-    .process-track {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      position: relative;
-      gap: 0;
-    }
-    .process-track::before {
-      content: '';
-      position: absolute;
-      top: 28px; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold-dk), transparent);
-    }
-    .process-step { padding: 0 24px 0; text-align: center; }
-    .step-num {
-      width: 56px; height: 56px;
-      border: 1px solid var(--gold-dk);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 24px;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      color: var(--gold);
-      background: var(--black);
-      position: relative; z-index: 1;
-    }
-    .process-step h3 { font-size: 1.1rem; margin-bottom: 10px; }
-    .process-step p { font-size: .85rem; color: var(--muted); }
-
-    /* ── COVERAGE ────────────────────────────────────────── */
-    #coverage { background: var(--dark); }
-    .coverage-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .coverage-text .eyebrow { margin-bottom: 16px; }
-    .coverage-text h2 { margin-bottom: 20px; }
-    .coverage-text p { color: var(--muted); margin-bottom: 32px; }
-    .coverage-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .coverage-list li {
-      display: flex; align-items: center; gap: 12px;
-      font-size: .9rem; color: var(--muted);
-    }
-    .coverage-list li::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--gold);
-      flex-shrink: 0;
-    }
-    .coverage-map {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      aspect-ratio: 1;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .coverage-map iframe { width: 100%; height: 100%; border: none; }
-
-    /* ── REVIEWS ─────────────────────────────────────────── */
-    #reviews { background: var(--black); }
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-    }
-    .review-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 36px;
-      position: relative;
-    }
-    .review-card::before {
-      content: '"';
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 5rem;
-      color: var(--gold-dk);
-      position: absolute;
-      top: 8px; left: 28px;
-      line-height: 1;
-      opacity: .5;
-    }
-    .review-stars { color: var(--gold); font-size: .85rem; margin-bottom: 16px; }
-    .review-text { font-size: .92rem; color: rgba(245,240,232,.8); line-height: 1.75; margin-bottom: 24px; }
-    .review-author { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-
-    /* ── CONTACT ─────────────────────────────────────────── */
-    #contact { background: var(--dark); }
-    .contact-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-    .contact-info .eyebrow { margin-bottom: 16px; }
-    .contact-info h2 { margin-bottom: 20px; }
-    .contact-info p { color: var(--muted); margin-bottom: 40px; }
-    .contact-details { display: flex; flex-direction: column; gap: 20px; }
-    .contact-detail {
-      display: flex; gap: 16px; align-items: flex-start;
-    }
-    .contact-detail .icon {
-      width: 36px; height: 36px;
-      border: 1px solid var(--gold-dk);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--gold); font-size: .9rem; flex-shrink: 0;
-    }
-    .contact-detail .detail-text .lbl { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
-    .contact-detail .detail-text .val { font-size: .95rem; }
-    .contact-detail .detail-text a:hover { color: var(--gold); }
-
-    /* contact form */
-    .contact-form { display: flex; flex-direction: column; gap: 16px; }
-    .contact-form input,
-    .contact-form select,
-    .contact-form textarea {
-      width: 100%;
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--white);
-      padding: 14px 18px;
-      font-family: 'Inter', sans-serif;
-      font-size: .9rem;
-      font-weight: 300;
-      outline: none;
-      transition: border-color .2s;
-    }
-    .contact-form input:focus,
-    .contact-form select:focus,
-    .contact-form textarea:focus { border-color: var(--gold); }
-    .contact-form select option { background: var(--card); }
-    .contact-form textarea { resize: vertical; min-height: 120px; }
-    .contact-form input::placeholder,
-    .contact-form textarea::placeholder { color: var(--muted); }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-    /* ── FOOTER ──────────────────────────────────────────── */
-    footer {
-      background: var(--black);
-      border-top: 1px solid var(--border);
-      padding: 48px 0;
-    }
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 24px;
-    }
-    .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      color: var(--gold);
-    }
-    .footer-copy { font-size: .78rem; color: var(--muted); }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a { font-size: .78rem; color: var(--muted); letter-spacing: .06em; }
-    .footer-links a:hover { color: var(--gold); }
-
-    /* ── CHAT WIDGET ─────────────────────────────────────── */
-    #chat-toggle {
-      position: fixed;
-      bottom: 28px; left: 28px;
-      z-index: 999;
-      width: 60px; height: 60px;
-      background: var(--gold);
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 20px rgba(201,168,76,.4);
-      transition: background .2s, transform .2s;
-    }
-    #chat-toggle:hover { background: var(--gold-lt); transform: scale(1.05); }
-    #chat-toggle svg { width: 26px; height: 26px; fill: var(--black); }
-
-    #chat-window {
-      position: fixed;
-      bottom: 100px; left: 28px;
-      z-index: 998;
-      width: 360px;
-      max-height: 520px;
-      background: var(--dark);
-      border: 1px solid var(--border);
-      border-top: 2px solid var(--gold);
-      display: flex; flex-direction: column;
-      box-shadow: 0 20px 60px rgba(0,0,0,.6);
-      transform: translateY(20px);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .25s, transform .25s;
-    }
-    #chat-window.open { opacity: 1; transform: translateY(0); pointer-events: all; }
-
-    .chat-header {
-      padding: 16px 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; gap: 12px;
-    }
-    .chat-avatar {
-      width: 36px; height: 36px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      color: var(--black); font-weight: 600;
-    }
-    .chat-header-info .name { font-size: .9rem; font-weight: 500; }
-    .chat-header-info .status { font-size: .72rem; color: var(--gold); display: flex; align-items: center; gap: 5px; }
-    .chat-header-info .status::before { content: ''; display: inline-block; width: 6px; height: 6px; background: #4caf50; border-radius: 50%; }
-
-    #chat-messages {
-      flex: 1; overflow-y: auto;
-      padding: 20px;
-      display: flex; flex-direction: column; gap: 12px;
-      scroll-behavior: smooth;
-    }
-    #chat-messages::-webkit-scrollbar { width: 4px; }
-    #chat-messages::-webkit-scrollbar-track { background: transparent; }
-    #chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-
-    .msg {
-      max-width: 85%;
-      padding: 10px 14px;
-      font-size: .88rem;
-      line-height: 1.6;
-    }
-    .msg.assistant {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 0 8px 8px 8px;
-      align-self: flex-start;
-    }
-    .msg.user {
-      background: var(--gold-dk);
-      color: var(--white);
-      border-radius: 8px 0 8px 8px;
-      align-self: flex-end;
-    }
-    .msg.typing { opacity: .6; font-style: italic; }
-
-    .chat-input-area {
-      padding: 16px;
-      border-top: 1px solid var(--border);
-      display: flex; gap: 10px;
-    }
-    #chat-input {
-      flex: 1;
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--white);
-      padding: 10px 14px;
-      font-family: 'Inter', sans-serif;
-      font-size: .88rem;
-      font-weight: 300;
-      outline: none;
-      transition: border-color .2s;
-      resize: none;
-      border-radius: 2px;
-    }
-    #chat-input:focus { border-color: var(--gold); }
-    #chat-input::placeholder { color: var(--muted); }
-    #chat-send {
-      background: var(--gold);
-      border: none; cursor: pointer;
-      padding: 10px 16px;
-      color: var(--black);
-      display: flex; align-items: center; justify-content: center;
-      transition: background .2s;
-    }
-    #chat-send:hover { background: var(--gold-lt); }
-    #chat-send svg { width: 18px; height: 18px; }
-
-    /* call button float */
-    #call-float {
-      position: fixed;
-      bottom: 28px; right: 28px;
-      z-index: 997;
-      background: var(--gold);
-      color: var(--black);
-      padding: 14px 28px;
-      font-size: .82rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      font-weight: 500;
-      font-family: 'Inter', sans-serif;
-      border: none; cursor: pointer;
-      box-shadow: 0 4px 20px rgba(201,168,76,.35);
-      display: flex; align-items: center; gap: 10px;
-      transition: background .2s;
-      text-decoration: none;
-    }
-    #call-float:hover { background: var(--gold-lt); }
-
-    /* ── RESPONSIVE ──────────────────────────────────────── */
-    @media (max-width: 900px) {
-      nav { padding: 0 20px; }
-      .nav-links { display: none; }
-      .nav-links.mobile-open {
-        display: flex; flex-direction: column;
-        position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
-        background: var(--dark);
-        padding: 40px 24px;
-        gap: 24px;
-        align-items: flex-start;
-        z-index: 99;
-      }
-      .nav-links.mobile-open a { font-size: 1rem; }
-      .hamburger { display: flex; }
-      .nav-cta { display: none; }
-
-      .coverage-inner,
-      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
-      .coverage-map { aspect-ratio: 16/9; }
-      .form-row { grid-template-columns: 1fr; }
-
-      .gallery-grid .g1, .gallery-grid .g2,
-      .gallery-grid .g3, .gallery-grid .g4, .gallery-grid .g5 {
-        grid-column: span 12;
-      }
-
-      .process-track { grid-template-columns: 1fr 1fr; }
-      .process-track::before { display: none; }
-
-      #chat-window { width: calc(100vw - 32px); left: 16px; right: 16px; }
-      #call-float { display: none; }
-    }
-
-    @media (max-width: 480px) {
-      section { padding: 72px 0; }
-      .hero-badges { gap: 28px; }
-      .process-track { grid-template-columns: 1fr; }
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Scalen Countertops | Custom Stone Countertops Jacksonville FL</title>
+<meta name="description" content="Premium custom countertops in Jacksonville, FL. Granite, quartz, quartzite, marble & porcelain. Kitchen remodel, bathroom vanities, outdoor. Serving 200 miles. Call (904) 932-9591."/>
+<link rel="icon" href="assets/favicon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#0a0a0a;--gold:#C9A84C;--gold-light:#E8C96D;--white:#fff;--gray:#888;--dark:#161616}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;font-weight:300;line-height:1.6;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:120px;background:#111;border-bottom:2px solid var(--gold)}
+.nav-logo-box{background:#000;border:1px solid rgba(201,168,76,0.4);padding:12px 22px}
+.nav-logo{height:82px;width:auto;display:block}
+.nav-links{display:flex;gap:30px;align-items:center;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;transition:.3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--black)!important;padding:12px 26px;font-weight:600}
+.nav-cta:hover{background:var(--gold-light)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{display:block;width:26px;height:2px;background:var(--gold)}
+.mobile-menu{display:none;position:fixed;top:120px;left:0;right:0;background:#111;border-top:1px solid var(--gold);padding:24px 5%;z-index:99}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:14px 0;color:var(--white);text-decoration:none;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.06)}
+.mobile-menu a:last-child{color:var(--gold);border:none;margin-top:8px}
+.hero{min-height:100vh;display:flex;align-items:center;padding:160px 5% 80px;background:linear-gradient(135deg,#0f0f0f 0%,#0a0a0a 100%)}
+.hero-eyebrow{font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;display:flex;align-items:center;gap:14px}
+.hero-eyebrow::before{content:'';display:block;width:40px;height:1px;background:var(--gold)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,7vw,92px);font-weight:300;line-height:1.05;margin-bottom:28px}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:16px;color:rgba(255,255,255,0.55);max-width:480px;margin-bottom:48px;line-height:1.8}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.btn-primary{background:var(--gold);color:var(--black);padding:16px 40px;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;text-decoration:none;transition:.3s;display:inline-block}
+.btn-primary:hover{background:var(--gold-light)}
+.btn-call{border:1px solid rgba(201,168,76,0.5);color:var(--white);padding:16px 32px;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:.3s;display:inline-flex;align-items:center;gap:10px}
+.btn-call:hover{border-color:var(--gold);color:var(--gold)}
+.btn-call svg{width:16px;height:16px;fill:currentColor}
+.hero-stats{display:flex;gap:56px;margin-top:72px;padding-top:48px;border-top:1px solid rgba(255,255,255,0.08);flex-wrap:wrap}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:var(--gold);line-height:1}
+.stat-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);margin-top:8px}
+.section-header{text-align:center;margin-bottom:72px}
+.section-eyebrow{font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,5vw,60px);font-weight:300;line-height:1.1}
+.section-title em{font-style:italic;color:var(--gold)}
+.services{padding:100px 5%;background:#0d0d0d}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.service-card{background:var(--dark);padding:48px 36px;transition:.3s;position:relative;overflow:hidden}
+.service-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:.4s}
+.service-card:hover::after{transform:scaleX(1)}
+.service-card:hover{background:#1c1c1c}
+.service-icon{font-size:30px;margin-bottom:20px}
+.service-card h3{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;margin-bottom:12px}
+.service-card p{font-size:14px;color:rgba(255,255,255,0.45);line-height:1.75}
+.gallery{padding:100px 5%;background:#080808}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:280px;gap:6px;margin-top:60px}
+.gallery-item{position:relative;overflow:hidden;cursor:pointer}
+.gallery-item.featured{grid-column:span 2;grid-row:span 2}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;display:block}
+.gallery-item:hover img{transform:scale(1.07)}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 50%);opacity:0;transition:.4s;display:flex;align-items:flex-end;padding:24px}
+.gallery-item:hover .gallery-overlay{opacity:1}
+.gallery-label{color:var(--white);font-size:13px;letter-spacing:0.1em;text-transform:uppercase;transform:translateY(8px);transition:.4s}
+.gallery-item:hover .gallery-label{transform:translateY(0)}
+.gallery-sublabel{font-size:11px;color:var(--gold);margin-top:4px}
+.gallery-cta{text-align:center;margin-top:48px}
+.gallery-cta p{color:rgba(255,255,255,0.35);font-size:13px;margin-bottom:20px}
+.materials{padding:100px 5%;background:#0d0d0d}
+.materials-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-top:60px}
+.material-card{padding:44px 24px;text-align:center;border:1px solid rgba(201,168,76,0.12);transition:.3s}
+.material-card:hover{border-color:var(--gold);background:rgba(201,168,76,0.04)}
+.material-icon{font-size:26px;margin-bottom:16px}
+.material-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;margin-bottom:10px}
+.material-desc{font-size:12px;color:var(--gray);line-height:1.65}
+.process{padding:100px 5%;background:#080808}
+.process-steps{display:grid;grid-template-columns:repeat(5,1fr);margin-top:64px;position:relative}
+.process-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:rgba(201,168,76,0.2)}
+.process-step{text-align:center;padding:0 12px;position:relative}
+.step-num{width:56px;height:56px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);background:var(--black);position:relative;z-index:1}
+.step-title{font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px}
+.step-desc{font-size:12px;color:var(--gray);line-height:1.65}
+.coverage{padding:100px 5%;background:#0d0d0d}
+.coverage-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.coverage-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,54px);font-weight:300;line-height:1.15;margin-bottom:24px}
+.coverage-text h2 em{font-style:italic;color:var(--gold)}
+.coverage-text p{color:rgba(255,255,255,0.5);font-size:15px;line-height:1.8;margin-bottom:32px}
+.cities-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.city-tag{font-size:12px;letter-spacing:0.08em;color:rgba(255,255,255,0.45);padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.06);text-transform:uppercase}
+.coverage-visual{background:var(--dark);border:1px solid rgba(201,168,76,0.15);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.coverage-num{font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:300;color:var(--gold);line-height:1}
+.coverage-unit{font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray)}
+.reviews{padding:100px 5%;background:#080808}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.review-card{background:var(--dark);padding:40px 32px;border-top:2px solid var(--gold)}
+.review-stars{color:var(--gold);font-size:14px;letter-spacing:4px;margin-bottom:20px}
+.review-text{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:300;font-style:italic;line-height:1.65;color:rgba(255,255,255,0.82);margin-bottom:24px}
+.review-author{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold)}
+.review-location{font-size:12px;color:var(--gray);margin-top:4px}
+.contact{padding:100px 5%;background:#0d0d0d}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-info h2{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,54px);font-weight:300;line-height:1.15;margin-bottom:24px}
+.contact-info h2 em{font-style:italic;color:var(--gold)}
+.contact-info p{color:rgba(255,255,255,0.5);font-size:15px;line-height:1.8;margin-bottom:40px}
+.contact-detail{display:flex;gap:16px;margin-bottom:20px}
+.contact-detail-icon{color:var(--gold);font-size:16px;margin-top:2px}
+.contact-detail-text{font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6}
+.contact-detail-text a{color:var(--white);text-decoration:none}
+.contact-detail-text a:hover{color:var(--gold)}
+form{display:flex;flex-direction:column;gap:14px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+input,select,textarea{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:14px 18px;font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:.3s}
+input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.3)}
+select{appearance:none;cursor:pointer}
+select option{background:#1a1a1a}
+textarea{resize:vertical;min-height:120px}
+.form-submit{background:var(--gold);color:var(--black);border:none;padding:16px;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:.3s}
+.form-submit:hover{background:var(--gold-light)}
+.form-note{font-size:12px;color:var(--gray);text-align:center}
+footer{background:#080808;border-top:1px solid rgba(201,168,76,0.2);padding:60px 5% 32px}
+.footer-inner{display:grid;grid-template-columns:1fr auto 1fr;gap:40px;align-items:center;margin-bottom:40px}
+.footer-logo-box{background:#000;border:1px solid rgba(201,168,76,0.25);padding:12px 24px;display:inline-flex}
+.footer-logo{height:78px;width:auto}
+.footer-links{display:flex;gap:28px;list-style:none;justify-content:center}
+.footer-links a{color:var(--gray);text-decoration:none;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;transition:.3s}
+.footer-links a:hover{color:var(--gold)}
+.footer-contact{text-align:right;font-size:13px;color:var(--gray);line-height:2}
+.footer-contact a{color:var(--white);text-decoration:none}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;text-align:center;font-size:12px;color:rgba(255,255,255,0.2);letter-spacing:0.05em}
+.call-float{position:fixed;bottom:28px;right:28px;z-index:200;background:var(--gold);color:var(--black);border:none;padding:14px 22px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:10px;text-decoration:none;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:.3s}
+.call-float:hover{background:var(--gold-light);transform:translateY(-2px)}
+.call-float svg{width:16px;height:16px;fill:currentColor;flex-shrink:0}
+.chat-toggle{position:fixed;bottom:28px;left:28px;z-index:200;width:58px;height:58px;background:#1a1a1a;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(201,168,76,0.2);transition:.3s}
+.chat-toggle:hover{background:#222;transform:scale(1.05)}
+.chat-toggle svg{width:24px;height:24px;fill:var(--gold)}
+.chat-badge{position:absolute;top:-4px;right:-4px;width:18px;height:18px;background:var(--gold);border-radius:50%;font-size:10px;font-weight:700;color:var(--black);display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif}
+.chat-window{position:fixed;bottom:100px;left:28px;z-index:199;width:360px;height:520px;background:#111;border:1px solid rgba(201,168,76,0.3);display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,0.6);transform:translateY(20px) scale(0.95);opacity:0;pointer-events:none;transition:.3s cubic-bezier(.34,1.56,.64,1)}
+.chat-window.open{transform:translateY(0) scale(1);opacity:1;pointer-events:all}
+.chat-header{background:var(--dark);border-bottom:1px solid rgba(201,168,76,0.2);padding:16px 20px;display:flex;align-items:center;gap:12px}
+.chat-avatar{width:38px;height:38px;background:linear-gradient(135deg,var(--gold),#8a6820);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.chat-header-info{flex:1}
+.chat-name{font-size:14px;font-weight:500;color:var(--white);letter-spacing:0.03em}
+.chat-status{font-size:11px;color:#4ade80;display:flex;align-items:center;gap:5px}
+.chat-status::before{content:'';width:6px;height:6px;background:#4ade80;border-radius:50%;display:block}
+.chat-close{background:none;border:none;color:var(--gray);cursor:pointer;font-size:18px;padding:4px;line-height:1}
+.chat-close:hover{color:var(--white)}
+.chat-messages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px}
+.chat-messages::-webkit-scrollbar{width:4px}
+.chat-messages::-webkit-scrollbar-thumb{background:rgba(201,168,76,0.3);border-radius:2px}
+.msg{max-width:85%;display:flex;flex-direction:column;gap:4px}
+.msg.sofia{align-self:flex-start}
+.msg.user{align-self:flex-end}
+.msg-bubble{padding:10px 14px;font-size:13px;line-height:1.6;border-radius:2px}
+.msg.sofia .msg-bubble{background:var(--dark);color:rgba(255,255,255,0.85);border-left:2px solid var(--gold)}
+.msg.user .msg-bubble{background:var(--gold);color:var(--black);font-weight:500}
+.msg-time{font-size:10px;color:var(--gray);padding:0 4px}
+.msg.user .msg-time{text-align:right}
+.typing{display:flex;gap:4px;align-items:center;padding:10px 14px;background:var(--dark);border-left:2px solid var(--gold);width:fit-content}
+.typing span{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:bounce .8s infinite}
+.typing span:nth-child(2){animation-delay:.15s}
+.typing span:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+.chat-input-area{border-top:1px solid rgba(201,168,76,0.15);padding:14px 16px;display:flex;gap:10px;align-items:flex-end}
+.chat-input{flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:10px 14px;font-family:'Inter',sans-serif;font-size:13px;outline:none;resize:none;max-height:100px;line-height:1.5;transition:.3s}
+.chat-input:focus{border-color:var(--gold)}
+.chat-input::placeholder{color:rgba(255,255,255,0.25)}
+.chat-send{background:var(--gold);border:none;color:var(--black);width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:.3s}
+.chat-send:hover{background:var(--gold-light)}
+.chat-send svg{width:16px;height:16px;fill:currentColor}
+.chat-footer{padding:8px 16px;text-align:center;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.05em;border-top:1px solid rgba(255,255,255,0.04)}
+@media(max-width:900px){
+  .services-grid{grid-template-columns:1fr 1fr}
+  .materials-grid{grid-template-columns:repeat(3,1fr)}
+  .process-steps{grid-template-columns:1fr 1fr;gap:40px}
+  .process-steps::before{display:none}
+  .coverage-inner,.contact-inner{grid-template-columns:1fr}
+  .reviews-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr;text-align:center}
+  .footer-contact{text-align:center}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:220px}
+  .gallery-item.featured{grid-column:span 2;grid-row:span 1}
+  .chat-window{width:calc(100vw - 40px);left:20px}
+}
+@media(max-width:640px){
+  nav{height:96px}
+  .nav-logo{height:66px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .mobile-menu{top:96px}
+  .services-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr;grid-auto-rows:240px}
+  .gallery-item.featured{grid-column:span 1;grid-row:span 1}
+  .materials-grid{grid-template-columns:1fr 1fr}
+  .process-steps{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .hero-stats{gap:32px}
+  .call-float span{display:none}
+  .call-float{padding:14px}
+}
+</style>
 </head>
 <body>
 
-<!-- ── NAV ─────────────────────────────────────────────── -->
 <nav>
-  <a class="nav-logo" href="#hero">
-    <img src="assets/logo.png" alt="Scalen Countertops"
-         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-    <span class="nav-logo-text" style="display:none">Scalen</span>
-  </a>
-  <ul class="nav-links" id="navLinks">
+  <div class="nav-logo-box">
+    <img src="assets/logo.png" alt="Scalen Countertops" class="nav-logo"/>
+  </div>
+  <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#materials">Materials</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#coverage">Coverage</a></li>
-    <li><a href="#reviews">Reviews</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
   </ul>
-  <button class="nav-cta" onclick="window.location='tel:9049329591'">Call (904) 932-9591</button>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
-
-<!-- ── HERO ────────────────────────────────────────────── -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="container">
-    <div class="hero-content">
-      <p class="eyebrow">Jacksonville, FL · Up to 200 Miles</p>
-      <h1>Custom Surface,<br><em>Built to Last</em></h1>
-      <p>Premium granite, marble, quartz, and porcelain countertops — paired with full kitchen and bathroom remodels crafted to elevate your home.</p>
-      <div class="hero-actions">
-        <button class="btn-primary" onclick="window.location='tel:9049329591'">
-          ☎ Call Sofia Now
-        </button>
-        <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-          Get Free Quote
-        </button>
-      </div>
-    </div>
-    <div class="hero-badges">
-      <div class="hero-badge"><div class="num">500+</div><div class="lbl">Projects Done</div></div>
-      <div class="hero-badge"><div class="num">10+</div><div class="lbl">Years Experience</div></div>
-      <div class="hero-badge"><div class="num">200mi</div><div class="lbl">Service Area</div></div>
-      <div class="hero-badge"><div class="num">5★</div><div class="lbl">Google Rating</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ── SERVICES ─────────────────────────────────────────── -->
-<section id="services">
-  <div class="container">
-    <div class="section-header">
-      <p class="eyebrow">What We Do</p>
-      <h2>Complete Surface &amp; Remodel <span class="gold">Solutions</span></h2>
-      <div class="divider"></div>
-    </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">◈</div>
-        <h3>Countertops</h3>
-        <p>Granite, marble, quartz, quartzite, and porcelain surfaces — precision-cut and professionally installed.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">⌂</div>
-        <h3>Kitchen Remodel</h3>
-        <p>Full kitchen transformation: cabinets, countertops, backsplash, flooring, layout changes, sink &amp; faucet.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">◻</div>
-        <h3>Bathroom Remodel</h3>
-        <p>Tile shower, tub, vanity, flooring, painting, and plumbing — a complete bathroom makeover.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">⧗</div>
-        <h3>Old Countertop Removal</h3>
-        <p>Safe removal and disposal of your existing countertops before the new installation begins.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">✦</div>
-        <h3>Cabinets &amp; Backsplash</h3>
-        <p>Custom cabinetry and tile backsplash that complement your new surfaces perfectly.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">⚙</div>
-        <h3>Plumbing &amp; Electrical</h3>
-        <p>Licensed plumbing and electrical work handled by certified contractors within our team.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── GALLERY ──────────────────────────────────────────── -->
-<section id="gallery">
-  <div class="container">
-    <div class="section-header">
-      <p class="eyebrow">Our Work</p>
-      <h2>Recent <span class="gold">Projects</span></h2>
-      <div class="divider"></div>
-    </div>
-    <div class="gallery-grid">
-      <div class="g1"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80" alt="Granite kitchen countertop" loading="lazy" /></div>
-      <div class="g2"><img src="https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?w=600&q=80" alt="Marble bathroom" loading="lazy" /></div>
-      <div class="g3"><img src="https://images.unsplash.com/photo-1585637071565-a5e7fd6566c6?w=500&q=80" alt="Quartz countertop installation" loading="lazy" /></div>
-      <div class="g4"><img src="https://images.unsplash.com/photo-1556909172-8c2f041fca1e?w=500&q=80" alt="Kitchen remodel" loading="lazy" /></div>
-      <div class="g5"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=500&q=80" alt="Bathroom tile shower" loading="lazy" /></div>
-    </div>
-  </div>
-</section>
-
-<!-- ── MATERIALS ────────────────────────────────────────── -->
-<section id="materials">
-  <div class="container">
-    <div class="section-header">
-      <p class="eyebrow">Surface Catalog</p>
-      <h2>Premium <span class="gold">Materials</span></h2>
-      <div class="divider"></div>
-    </div>
-    <div class="materials-grid">
-      <div class="material-card">
-        <img src="https://images.unsplash.com/photo-1601760561441-16420502c7e0?w=500&q=80" alt="Granite" loading="lazy" />
-        <div class="overlay">
-          <h3>Granite</h3>
-          <p>Natural durability &amp; unique patterns</p>
-        </div>
-      </div>
-      <div class="material-card">
-        <img src="https://images.unsplash.com/photo-1620626011761-996317702519?w=500&q=80" alt="Marble" loading="lazy" />
-        <div class="overlay">
-          <h3>Marble</h3>
-          <p>Timeless elegance &amp; veining</p>
-        </div>
-      </div>
-      <div class="material-card">
-        <img src="https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=500&q=80" alt="Quartz" loading="lazy" />
-        <div class="overlay">
-          <h3>Quartz</h3>
-          <p>Low-maintenance engineered stone</p>
-        </div>
-      </div>
-      <div class="material-card">
-        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=500&q=80" alt="Quartzite" loading="lazy" />
-        <div class="overlay">
-          <h3>Quartzite</h3>
-          <p>Hard, crystalline natural stone</p>
-        </div>
-      </div>
-      <div class="material-card">
-        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500&q=80" alt="Porcelain" loading="lazy" />
-        <div class="overlay">
-          <h3>Porcelain</h3>
-          <p>Ultra-slim &amp; heat resistant</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── PROCESS ──────────────────────────────────────────── -->
-<section id="process">
-  <div class="container">
-    <div class="section-header">
-      <p class="eyebrow">How It Works</p>
-      <h2>From Quote to <span class="gold">Completion</span></h2>
-      <div class="divider"></div>
-    </div>
-    <div class="process-track">
-      <div class="process-step">
-        <div class="step-num">1</div>
-        <h3>Free Consultation</h3>
-        <p>Call or chat with Sofia. We gather your vision, dimensions, and budget.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">2</div>
-        <h3>In-Home Measure</h3>
-        <p>Our team visits, measures precisely, and recommends the best materials.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">3</div>
-        <h3>Material Selection</h3>
-        <p>Choose from our premium slab inventory — granite, marble, quartz &amp; more.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">4</div>
-        <h3>Fabrication</h3>
-        <p>Precision cutting and edge profiling in our state-of-the-art facility.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">5</div>
-        <h3>Installation</h3>
-        <p>Expert installation team handles delivery, fitting, and finishing.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">6</div>
-        <h3>Final Walkthrough</h3>
-        <p>We inspect every detail together. Your satisfaction is guaranteed.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── COVERAGE ─────────────────────────────────────────── -->
-<section id="coverage">
-  <div class="container">
-    <div class="coverage-inner">
-      <div class="coverage-text">
-        <p class="eyebrow">Service Area</p>
-        <h2>We Come <span class="gold">to You</span></h2>
-        <p>Based in Jacksonville, FL — we serve homeowners and contractors within a 200-mile radius, covering the entire Northeast Florida region.</p>
-        <ul class="coverage-list">
-          <li>Jacksonville &amp; surrounding metro</li>
-          <li>St. Augustine · Palatka · Gainesville</li>
-          <li>Daytona Beach · Orlando area</li>
-          <li>Savannah, GA &amp; coastal Georgia</li>
-          <li>Tallahassee &amp; North Florida</li>
-        </ul>
-        <br />
-        <button class="btn-primary" onclick="window.location='tel:9049329591'" style="margin-top:8px">
-          Check Your Area — Call Now
-        </button>
-      </div>
-      <div class="coverage-map">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1773932!2d-82.0!3d30.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e5b716f1ceafeb%3A0xc4cd7d3896fcc7aa!2sJacksonville%2C%20FL!5e0!3m2!1sen!2sus!4v1700000000000"
-          allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Scalen service area map">
-        </iframe>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── REVIEWS ──────────────────────────────────────────── -->
-<section id="reviews">
-  <div class="container">
-    <div class="section-header">
-      <p class="eyebrow">Client Reviews</p>
-      <h2>What Homeowners <span class="gold">Say</span></h2>
-      <div class="divider"></div>
-    </div>
-    <div class="reviews-grid">
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">They transformed our kitchen completely. The quartz countertop is absolutely stunning and the installation was flawless. Would highly recommend to anyone in Jacksonville.</p>
-        <p class="review-author">— Sarah M., Jacksonville</p>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">Professional team, on time, and the marble bathroom is beyond what I expected. They handled everything from demo to final plumbing. Worth every penny.</p>
-        <p class="review-author">— David K., St. Augustine</p>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">As a contractor, I've worked with many suppliers. Scalen is my go-to for countertops. Quality material, fast turnaround, and the team actually shows up when they say they will.</p>
-        <p class="review-author">— Marcus T., Contractor</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── CONTACT ──────────────────────────────────────────── -->
-<section id="contact">
-  <div class="container">
-    <div class="contact-inner">
-      <div class="contact-info">
-        <p class="eyebrow">Let's Talk</p>
-        <h2>Get Your Free <span class="gold">Quote</span></h2>
-        <p>Tell us about your project and we'll get back to you within a few hours — or just call Sofia directly.</p>
-        <div class="contact-details">
-          <div class="contact-detail">
-            <div class="icon">☎</div>
-            <div class="detail-text">
-              <div class="lbl">Phone</div>
-              <div class="val"><a href="tel:9049329591">(904) 932-9591</a></div>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="icon">✉</div>
-            <div class="detail-text">
-              <div class="lbl">Email</div>
-              <div class="val"><a href="mailto:info@scalencountertops.com">info@scalencountertops.com</a></div>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="icon">◎</div>
-            <div class="detail-text">
-              <div class="lbl">Location</div>
-              <div class="val">Jacksonville, FL · Up to 200 miles</div>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="icon">◷</div>
-            <div class="detail-text">
-              <div class="lbl">Hours</div>
-              <div class="val">Mon–Sat 8am–6pm</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <form class="contact-form" id="contactForm">
-        <div class="form-row">
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="tel" name="phone" placeholder="Phone Number" />
-        </div>
-        <input type="email" name="email" placeholder="Email Address" required />
-        <select name="service" required>
-          <option value="" disabled selected>Select Service</option>
-          <option>Countertop — Granite</option>
-          <option>Countertop — Marble</option>
-          <option>Countertop — Quartz</option>
-          <option>Countertop — Quartzite</option>
-          <option>Countertop — Porcelain</option>
-          <option>Kitchen Remodel</option>
-          <option>Bathroom Remodel</option>
-          <option>Old Countertop Removal</option>
-          <option>Other / Not Sure</option>
-        </select>
-        <textarea name="message" placeholder="Tell us about your project..."></textarea>
-        <button type="submit" class="btn-primary" style="cursor:pointer">Send Message →</button>
-        <p id="form-status" style="font-size:.82rem;color:var(--gold);display:none;margin-top:4px"></p>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- ── FOOTER ───────────────────────────────────────────── -->
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-logo">Scalen Countertops</div>
-      <p class="footer-copy">© 2025 Scalen Countertops LLC · Jacksonville, FL</p>
-      <div class="footer-links">
-        <a href="tel:9049329591">(904) 932-9591</a>
-        <a href="mailto:info@scalencountertops.com">Email</a>
-        <a href="#contact">Quote</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- ── CALL FLOAT ───────────────────────────────────────── -->
-<a id="call-float" href="tel:9049329591">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-  Call Sofia Now
-</a>
-
-<!-- ── CHAT TOGGLE ──────────────────────────────────────── -->
-<button id="chat-toggle" aria-label="Open chat with Sofia">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
-  </svg>
-</button>
-
-<!-- ── CHAT WINDOW ──────────────────────────────────────── -->
-<div id="chat-window" role="dialog" aria-label="Chat with Sofia">
-  <div class="chat-header">
-    <div class="chat-avatar">S</div>
-    <div class="chat-header-info">
-      <div class="name">Sofia · Scalen Assistant</div>
-      <div class="status">Online now</div>
-    </div>
-  </div>
-  <div id="chat-messages"></div>
-  <div class="chat-input-area">
-    <textarea id="chat-input" placeholder="Ask Sofia about your project…" rows="1"></textarea>
-    <button id="chat-send" aria-label="Send">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
-    </button>
-  </div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+  <a href="#materials" onclick="toggleMenu()">Materials</a>
+  <a href="#process" onclick="toggleMenu()">Process</a>
+  <a href="#coverage" onclick="toggleMenu()">Coverage</a>
+  <a href="#contact" onclick="toggleMenu()">Get a Free Quote</a>
 </div>
 
-<!-- ── SCRIPTS ──────────────────────────────────────────── -->
+<section class="hero">
+  <div>
+    <div class="hero-eyebrow">Jacksonville, FL &amp; surrounding areas</div>
+    <h1>Stone surfaces<br/>crafted to <em>last<br/>a lifetime</em></h1>
+    <p class="hero-sub">Custom countertops, kitchen &amp; bathroom remodels. Fabricated and installed by our team — from Jacksonville to 200 miles around.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Request a Free Quote</a>
+      <a href="tel:9049329591" class="btn-call">
+        <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        (904) 932-9591
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">10</div><div class="stat-label">Business days<br/>start to install</div></div>
+      <div><div class="stat-num">200<span style="font-size:24px">mi</span></div><div class="stat-label">Service radius<br/>from Jacksonville</div></div>
+      <div><div class="stat-num">100<span style="font-size:24px">%</span></div><div class="stat-label">Custom<br/>fabrication</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="section-header">
+    <div class="section-eyebrow">What we do</div>
+    <h2 class="section-title">Complete surface <em>solutions</em></h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card"><div class="service-icon">🍳</div><h3>Kitchen Countertops</h3><p>Custom-cut stone surfaces for kitchens of any size. Islands, perimeters, backsplashes — fabricated to your exact measurements.</p></div>
+    <div class="service-card"><div class="service-icon">🛁</div><h3>Bathroom Vanities</h3><p>Precision-crafted vanity tops and shower surrounds that bring a spa-like finish to any bathroom.</p></div>
+    <div class="service-card"><div class="service-icon">🏠</div><h3>Kitchen Remodel</h3><p>Full kitchen transformation — countertops, cabinets, backsplash, painting, plumbing and flawless installation.</p></div>
+    <div class="service-card"><div class="service-icon">✨</div><h3>Bathroom Remodel</h3><p>Complete bathroom upgrades — tub, tile shower, vanities, cabinets, painting, plumbing and more.</p></div>
+    <div class="service-card"><div class="service-icon">🔥</div><h3>Outdoor &amp; Fireplace</h3><p>Weather-resistant stone surfaces for outdoor kitchens, BBQ counters, and fireplace surrounds.</p></div>
+    <div class="service-card"><div class="service-icon">🏢</div><h3>Commercial Projects</h3><p>Reliable supply and installation for contractors and developers. Consistent quality at scale.</p></div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="section-header">
+    <div class="section-eyebrow">Our work</div>
+    <h2 class="section-title">Crafted with <em>precision</em></h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item featured">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80" alt="Kitchen Countertop" loading="lazy"/>
+      <div class="gallery-overlay"><div><div class="gallery-label">Kitchen Countertop</div><div class="gallery-sublabel">Quartz Island</div></div></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80" alt="Bathroom Vanity" loading="lazy"/>
+      <div class="gallery-overlay"><div><div class="gallery-label">Bathroom Vanity</div><div class="gallery-sublabel">Marble Surface</div></div></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&q=80" alt="Kitchen Remodel" loading="lazy"/>
+      <div class="gallery-overlay"><div><div class="gallery-label">Kitchen Remodel</div><div class="gallery-sublabel">Modern Design</div></div></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&q=80" alt="Kitchen Detail" loading="lazy"/>
+      <div class="gallery-overlay"><div><div class="gallery-label">Kitchen Detail</div><div class="gallery-sublabel">Stone Surface</div></div></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Luxury Kitchen" loading="lazy"/>
+      <div class="gallery-overlay"><div><div class="gallery-label">Luxury Kitchen</div><div class="gallery-sublabel">Premium Stone</div></div></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80" alt="Custom Install" loading="lazy"/>
+      <div class="gallery-overlay"><div><div class="gallery-label">Custom Install</div><div class="gallery-sublabel">Granite Finish</div></div></div>
+    </div>
+  </div>
+  <div class="gallery-cta">
+    <p>Sample photos — your real project photos coming soon</p>
+    <a href="#contact" class="btn-primary">Start Your Project</a>
+  </div>
+</section>
+
+<section class="materials" id="materials">
+  <div class="section-header">
+    <div class="section-eyebrow">Our materials</div>
+    <h2 class="section-title">Every stone, <em>every style</em></h2>
+  </div>
+  <div class="materials-grid">
+    <div class="material-card"><div class="material-icon">🪨</div><div class="material-name">Granite</div><div class="material-desc">Natural durability with unique veining. Heat and scratch resistant.</div></div>
+    <div class="material-card"><div class="material-icon">💎</div><div class="material-name">Quartz</div><div class="material-desc">Engineered for consistency. Low maintenance, high performance.</div></div>
+    <div class="material-card"><div class="material-icon">🌿</div><div class="material-name">Quartzite</div><div class="material-desc">Natural stone with marble-like beauty and granite-like strength.</div></div>
+    <div class="material-card"><div class="material-icon">⬜</div><div class="material-name">Marble</div><div class="material-desc">Timeless elegance. Unique movement and texture in every slab.</div></div>
+    <div class="material-card"><div class="material-icon">🔲</div><div class="material-name">Porcelain</div><div class="material-desc">Ultra-thin, UV resistant. Perfect for outdoor applications.</div></div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="section-header">
+    <div class="section-eyebrow">How it works</div>
+    <h2 class="section-title">Simple process, <em>flawless result</em></h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step"><div class="step-num">1</div><div class="step-title">Contact Us</div><div class="step-desc">Call, text, or fill out the form. We respond the same day.</div></div>
+    <div class="process-step"><div class="step-num">2</div><div class="step-title">On-Site Visit</div><div class="step-desc">We visit your location and provide an accurate estimate.</div></div>
+    <div class="process-step"><div class="step-num">3</div><div class="step-title">Material Selection</div><div class="step-desc">Choose your stone, edge profile, and finish.</div></div>
+    <div class="process-step"><div class="step-num">4</div><div class="step-title">Fabrication</div><div class="step-desc">Precision-cut and finished in our shop to exact specs.</div></div>
+    <div class="process-step"><div class="step-num">5</div><div class="step-title">Installation</div><div class="step-desc">Professional install within 10 business days. Done right.</div></div>
+  </div>
+</section>
+
+<section class="coverage" id="coverage">
+  <div class="coverage-inner">
+    <div class="coverage-text">
+      <div class="section-eyebrow">Service area</div>
+      <h2>We come <em>to you</em></h2>
+      <p>Based in Jacksonville, FL, serving homeowners and contractors across Northeast Florida — up to 200 miles from our shop.</p>
+      <div class="cities-grid">
+        <div class="city-tag">Jacksonville</div><div class="city-tag">Ponte Vedra</div>
+        <div class="city-tag">Fleming Island</div><div class="city-tag">St. Augustine</div>
+        <div class="city-tag">Orange Park</div><div class="city-tag">Fernandina Beach</div>
+        <div class="city-tag">Gainesville</div><div class="city-tag">Daytona Beach</div>
+        <div class="city-tag">Ocala</div><div class="city-tag">Lake City</div>
+      </div>
+    </div>
+    <div class="coverage-visual">
+      <div class="coverage-num">200</div>
+      <div class="coverage-unit">Mile service radius</div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="section-header">
+    <div class="section-eyebrow">Client reviews</div>
+    <h2 class="section-title">What our clients <em>say</em></h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"The quartzite countertop they installed in our kitchen is absolutely stunning. The whole process took less than two weeks."</div><div class="review-author">Michael T.</div><div class="review-location">Kitchen Countertop · Ponte Vedra, FL</div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"Professional team, clean work, no mess left behind. They removed our old countertop and installed marble vanities in both bathrooms in one day."</div><div class="review-author">Sandra R.</div><div class="review-location">Bathroom Remodel · Jacksonville, FL</div></div>
+    <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"As a contractor, I've worked with many stone suppliers. Scalen is the most reliable — consistent quality and on-time delivery every time."</div><div class="review-author">James K.</div><div class="review-location">Commercial Project · St. Augustine, FL</div></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-eyebrow">Get in touch</div>
+      <h2>Request your <em>free quote</em></h2>
+      <p>Tell us about your project and we'll schedule an on-site visit. No obligation, no pressure.</p>
+      <div class="contact-detail"><div class="contact-detail-icon">📞</div><div class="contact-detail-text"><a href="tel:9049329591">(904) 932-9591</a></div></div>
+      <div class="contact-detail"><div class="contact-detail-icon">✉️</div><div class="contact-detail-text"><a href="mailto:info@scalencountertops.com">info@scalencountertops.com</a></div></div>
+      <div class="contact-detail"><div class="contact-detail-icon">📍</div><div class="contact-detail-text">Jacksonville, FL · Up to 200 miles</div></div>
+    </div>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Your Name" required/>
+        <input type="tel" name="phone" placeholder="Phone Number" required/>
+      </div>
+      <input type="email" name="email" placeholder="Email Address" required/>
+      <input type="text" name="city" placeholder="Your City / Zip Code"/>
+      <select name="project_type" required>
+        <option value="" disabled selected>Type of Project</option>
+        <option>Kitchen Countertop</option><option>Bathroom Vanity</option>
+        <option>Kitchen Remodel</option><option>Bathroom Remodel</option>
+        <option>Outdoor / Fireplace</option><option>Commercial Project</option><option>Other</option>
+      </select>
+      <select name="material">
+        <option value="" disabled selected>Preferred Material (optional)</option>
+        <option>Granite</option><option>Quartz</option><option>Quartzite</option>
+        <option>Marble</option><option>Porcelain</option><option>Not sure yet</option>
+      </select>
+      <textarea name="message" placeholder="Tell us about your project (size, timeline, any details)"></textarea>
+      <button type="submit" class="form-submit">Send My Request</button>
+      <div class="form-note">We respond within 1 business day</div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo-box">
+      <img src="assets/logo.png" alt="Scalen Countertops" class="footer-logo"/>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#materials">Materials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-contact">
+      <a href="tel:9049329591">(904) 932-9591</a><br/>
+      <a href="mailto:info@scalencountertops.com">info@scalencountertops.com</a><br/>
+      Jacksonville, FL
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Scalen Countertops LLC · Custom Surface, Built to Last</div>
+</footer>
+
+<a href="tel:9049329591" class="call-float">
+  <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+  <span>Call Sofia Now</span>
+</a>
+
+<div class="chat-toggle" id="chatToggle" onclick="toggleChat()">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+  <div class="chat-badge">1</div>
+</div>
+
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-avatar">💎</div>
+    <div class="chat-header-info">
+      <div class="chat-name">Sofia</div>
+      <div class="chat-status">Online now</div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-input-area">
+    <textarea class="chat-input" id="chatInput" placeholder="Ask Sofia anything..." rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+    <button class="chat-send" onclick="sendMessage()">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+  <div class="chat-footer">Sofia · Scalen Countertops Virtual Assistant</div>
+</div>
+
 <script>
-/* ── NAV HAMBURGER ─────────────────────────────────────── */
-const hamburger = document.getElementById('hamburger');
-const navLinks  = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => navLinks.classList.toggle('mobile-open'));
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('mobile-open')));
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open')));
 
-/* ── CONTACT FORM (Formspree) ──────────────────────────── */
-document.getElementById('contactForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const status = document.getElementById('form-status');
-  const btn    = e.target.querySelector('button[type=submit]');
-  btn.textContent = 'Sending…';
-  btn.disabled = true;
+var chatOpen=false,chatHistory=[],isTyping=false;
+var MAKE_WEBHOOK='https://hook.us2.make.com/9f7kx6i2u5epbigsszewi5oclatkyycn';
 
-  // TODO: Replace YOUR_FORMSPREE_ID with your actual Formspree form ID
-  try {
-    const res = await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: new FormData(e.target)
+var SYSTEM_PROMPT='You are Sofia, a warm and professional virtual assistant for Scalen Countertops, a custom countertop and full kitchen/bathroom remodeling company based in Jacksonville, Florida.\n\nYOUR ROLE: Answer questions about services and materials, collect leads, and schedule FREE in-home estimates.\n\nSERVICES WE OFFER:\n- Granite, Marble, Quartz, Quartzite, Porcelain countertops\n- Removal of old countertops\n- Kitchen remodeling (full scope)\n- Bathroom remodeling (full scope)\n- Outdoor kitchens and fireplace surrounds\n- Commercial projects\n\nKITCHEN REMODEL - FULL SCOPE includes: countertops, cabinet installation and refacing, backsplash tile, painting, layout changes, sink and faucet installation, flooring, plumbing (licensed contractors), electrical (licensed contractors).\n\nBATHROOM REMODEL - FULL SCOPE includes: countertops, vanities, tub replacement, tile shower installation, backsplash tile, cabinet installation, painting, layout changes, sink and faucet installation, flooring, plumbing (licensed contractors), electrical (licensed contractors).\n\nALWAYS ANSWER YES to: cabinets, tile shower, tub, backsplash, painting, plumbing, electrical, flooring, sink, faucet. For plumbing and electrical say we work with licensed contractors who are part of our team.\n\nMATERIALS:\n- Granite: natural stone, very durable, heat resistant, unique patterns\n- Marble: natural stone, elegant, softer, popular for bathrooms\n- Quartz: engineered stone, non-porous, low maintenance, consistent look\n- Quartzite: natural stone NOT the same as quartz, harder than marble, marble-like beauty but more durable, heat resistant\n- Porcelain: ultra-thin, UV resistant, great for outdoor\n\nSERVICE AREA: Up to 200 miles from Jacksonville FL including St. Augustine, Gainesville, Ocala, Daytona Beach, Orlando, Palm Coast, Lake City, Tallahassee, parts of Georgia. Miami, Tampa, Key West are outside our area.\n\nPRICING: Never quote prices. Say pricing depends on size, scope and materials, that is exactly why the free in-home estimate exists.\n\nSCHEDULING: To book a free estimate collect naturally 1-2 items at a time: full name, phone, email, service needed, preferred date and time, city and zip code.\n\nLEAD RETENTION - CRITICAL RULE:\n- NEVER say call us at or email us at or contact our team directly\n- When you cannot answer something or need team input, ALWAYS collect the customer info first\n- Say: Great question! Let me make sure our team gets back to you with the best answer. Can I get your name and best phone number or email?\n- Collect: full name, phone, email, and what they need\n- End with: Perfect! Our team will reach out within 1 business day.\n- NO lead is ever lost\n\nTONE: Warm, professional, concise. Never say you are an AI unless directly asked. If asked say I am Sofia, Scalen Countertops virtual assistant.';
+
+function toggleChat(){
+  chatOpen=!chatOpen;
+  document.getElementById('chatWindow').classList.toggle('open',chatOpen);
+  document.querySelector('.chat-badge').style.display='none';
+  if(chatOpen&&chatHistory.length===0){
+    setTimeout(function(){addSofiaMsg("Hi! I'm Sofia, Scalen Countertops' virtual assistant. 👋 Are you looking to schedule a free estimate, or do you have questions about our countertops or remodeling services?");},400);
+  }
+  if(chatOpen)setTimeout(function(){document.getElementById('chatInput').focus();},300);
+}
+
+function addSofiaMsg(text){
+  var msgs=document.getElementById('chatMessages');
+  var div=document.createElement('div');div.className='msg sofia';
+  var now=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  div.innerHTML='<div class="msg-bubble">'+text+'</div><div class="msg-time">'+now+'</div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+
+function addUserMsg(text){
+  var msgs=document.getElementById('chatMessages');
+  var div=document.createElement('div');div.className='msg user';
+  var now=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  div.innerHTML='<div class="msg-bubble">'+text+'</div><div class="msg-time">'+now+'</div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+
+function showTyping(){
+  var msgs=document.getElementById('chatMessages');
+  var div=document.createElement('div');div.className='msg sofia';div.id='typingIndicator';
+  div.innerHTML='<div class="typing"><span></span><span></span><span></span></div>';
+  msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
+}
+
+function removeTyping(){var t=document.getElementById('typingIndicator');if(t)t.remove();}
+
+function tryCaptureLead(reply){
+  var lower=reply.toLowerCase();
+  var isConfirmation=lower.indexOf('1 business day')>-1||lower.indexOf('team will')>-1||lower.indexOf('reach out')>-1||lower.indexOf('our team')>-1||lower.indexOf('within')>-1;
+  if(!isConfirmation)return;
+  var full=chatHistory.map(function(m){return m.content;}).join('\n');
+
+  var name='';
+  var namePatterns=[
+    /\*\*Name:\*\*\s*([A-Za-z]+(?:\s+[A-Za-z]+)?)/i,
+    /Name:\s*([A-Za-z]+(?:\s+[A-Za-z]+)?)/i,
+    /meet you,\s*\*?\*?([A-Za-z]+)/i,
+    /(?:name is|I(?:'m| am)|call me|this is)\s+([A-Za-z]+(?:\s+[A-Za-z]+)?)/i
+  ];
+  for(var i=0;i<namePatterns.length;i++){var m=full.match(namePatterns[i]);if(m&&m[1]){name=m[1].trim();break;}}
+
+  var phoneMatch=full.match(/\*\*Phone:\*\*\s*([\d\s\-\(\)\.]+)/i)||full.match(/\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/);
+  var phone=phoneMatch?(phoneMatch[1]?phoneMatch[1].trim():phoneMatch[0]):'';
+
+  var emailMatch=full.match(/\*\*Email:\*\*\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/i)||full.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
+  var email=emailMatch?(emailMatch[1]?emailMatch[1].trim():emailMatch[0]):'';
+
+  var serviceMatch=full.match(/\*\*Service:\*\*\s*([^\n\*]+)/i)||full.match(/(?:kitchen|bathroom|countertop|remodel|granite|marble|quartz|quartzite|porcelain|outdoor|commercial|cabinet|tile|tub|vanity)/i);
+  var service=serviceMatch?(serviceMatch[1]?serviceMatch[1].trim():serviceMatch[0]):'';
+
+  if(!phone&&!email)return;
+
+  var now=new Date();
+  var etDate=now.toLocaleString('en-US',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:true});
+
+  fetch(MAKE_WEBHOOK,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({name:name,phone:phone,email:email,service:service,message:full.slice(0,2000),date:etDate})
+  }).catch(function(){});
+}
+
+async function sendMessage(){
+  var input=document.getElementById('chatInput');
+  var text=input.value.trim();
+  if(!text||isTyping)return;
+  input.value='';input.style.height='auto';
+  addUserMsg(text);
+  chatHistory.push({role:'user',content:text});
+  isTyping=true;showTyping();
+  try{
+    var res=await fetch('/api/chat',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:SYSTEM_PROMPT,messages:chatHistory})
     });
-    if (res.ok) {
-      status.textContent = '✓ Message sent! We\'ll be in touch soon.';
-      status.style.display = 'block';
-      e.target.reset();
-    } else {
-      throw new Error();
-    }
-  } catch {
-    status.textContent = 'Something went wrong. Please call us directly at (904) 932-9591';
-    status.style.display = 'block';
+    var data=await res.json();
+    var reply=data.content&&data.content[0]?data.content[0].text:'I apologize, I had a technical issue. Please try again in a moment.';
+    removeTyping();addSofiaMsg(reply);
+    chatHistory.push({role:'assistant',content:reply});
+    tryCaptureLead(reply);
+  }catch(e){
+    removeTyping();
+    addSofiaMsg('I apologize for the trouble. Our team will be happy to help — please try again in a moment.');
   }
-  btn.textContent = 'Send Message →';
-  btn.disabled = false;
-});
-
-/* ── CHAT LOGIC ────────────────────────────────────────── */
-const chatToggle  = document.getElementById('chat-toggle');
-const chatWindow  = document.getElementById('chat-window');
-const chatInput   = document.getElementById('chat-input');
-const chatSend    = document.getElementById('chat-send');
-const chatMsgs    = document.getElementById('chat-messages');
-
-let chatOpen      = false;
-let chatHistory   = [];
-let leadCaptured  = false;
-let leadData      = { name: '', phone: '', email: '', service: '' };
-
-const MAKE_WEBHOOK = 'https://hook.us2.make.com/9f7kx6i2u5epbigsszewi5oclatkyycn';
-
-const SOFIA_SYSTEM = `You are Sofia, the virtual sales assistant for Scalen Countertops LLC, a premium countertop and remodeling company based in Jacksonville, FL, serving up to 200 miles.
-
-COMPANY INFO:
-- Phone: (904) 932-9591 (main line, VAPI/Sofia) | (904) 921-5057 (human transfer)
-- Email: info@scalencountertops.com
-- Website: www.scalencountertops.com
-- Tagline: "Custom Surface, Built to Last"
-- Average ticket: contractors ~$2,500 | homeowners ~$5,000
-- Preference: homeowner leads
-
-SERVICES:
-- Countertops: granite, marble, quartz, quartzite, porcelain
-- Old countertop removal
-- Kitchen remodel (cabinets, countertops, backsplash, flooring, layout changes, sink/faucet, painting)
-- Bathroom remodel (tile shower, tub, vanity, flooring, painting)
-- Plumbing & electrical via licensed contractors on the team
-
-YOUR ROLE:
-- Be warm, professional, and sales-focused
-- Qualify leads (project type, timeline, budget range)
-- Capture: full name, phone number, email, and service interested in
-- CRITICAL: NEVER tell the customer to call or email us directly. YOU handle everything here in chat. Retain all leads internally.
-- Once you have name + phone OR email + service, confirm you'll have a specialist follow up within a few hours
-- Keep responses concise (2-4 sentences max per turn)
-- Use natural language — never robotic or overly formal
-- If asked about pricing, give ranges: countertops $1,500–$8,000+ depending on material/size; full remodels $8,000–$40,000+
-- Always end early turns with a question to keep the conversation moving
-
-FORMAT FOR LEAD CAPTURE — when you have collected enough info, include this EXACTLY at the end of your message (invisible to customer):
-**Name:** [full name]
-**Phone:** [phone number or "not provided"]
-**Email:** [email or "not provided"]
-**Service:** [service type]`;
-
-// ── open / close ───────────────────────────────────────
-chatToggle.addEventListener('click', () => {
-  chatOpen = !chatOpen;
-  chatWindow.classList.toggle('open', chatOpen);
-  if (chatOpen && chatHistory.length === 0) {
-    addMsg('assistant', "Hi! I'm Sofia with Scalen Countertops 👋 Are you thinking about countertops, a kitchen remodel, or a bathroom renovation?");
-    chatHistory.push({ role: 'assistant', content: "Hi! I'm Sofia with Scalen Countertops 👋 Are you thinking about countertops, a kitchen remodel, or a bathroom renovation?" });
-    chatInput.focus();
-  }
-});
-
-// ── auto-resize textarea ───────────────────────────────
-chatInput.addEventListener('input', () => {
-  chatInput.style.height = 'auto';
-  chatInput.style.height = Math.min(chatInput.scrollHeight, 100) + 'px';
-});
-
-// ── send on Enter (not Shift+Enter) ───────────────────
-chatInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
-});
-chatSend.addEventListener('click', sendMessage);
-
-// ── add message bubble ─────────────────────────────────
-function addMsg(role, text) {
-  const div = document.createElement('div');
-  div.className = `msg ${role}`;
-  // Strip the lead capture block from displayed text
-  div.textContent = text.replace(/\*\*Name:\*\*[\s\S]*$/, '').trim();
-  chatMsgs.appendChild(div);
-  chatMsgs.scrollTop = chatMsgs.scrollHeight;
-  return div;
+  isTyping=false;
 }
 
-// ── robust name extraction ─────────────────────────────
-function extractName(text) {
-  // 1. Explicit marker from Sofia's structured output
-  let m = text.match(/\*\*Name:\*\*\s*(.+)/i);
-  if (m && m[1].trim() !== 'not provided') return m[1].trim();
-
-  // 2. "My name is X" / "I'm X" / "I am X"
-  m = text.match(/(?:my name is|i[''']?m|i am)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)/i);
-  if (m) return m[1].trim();
-
-  // 3. "Nice to meet you, X" / "meet you, X" 
-  m = text.match(/(?:nice to meet you|meet you)[,\s]+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)/i);
-  if (m) return m[1].trim();
-
-  // 4. "This is X" / "It's X calling"
-  m = text.match(/(?:this is|it[''']?s)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)/i);
-  if (m) return m[1].trim();
-
-  return null;
-}
-
-// ── extract lead data from Sofia's response ────────────
-function parseLead(text) {
-  const name    = (text.match(/\*\*Name:\*\*\s*(.+)/)    || [])[1]?.trim();
-  const phone   = (text.match(/\*\*Phone:\*\*\s*(.+)/)   || [])[1]?.trim();
-  const email   = (text.match(/\*\*Email:\*\*\s*(.+)/)   || [])[1]?.trim();
-  const service = (text.match(/\*\*Service:\*\*\s*(.+)/) || [])[1]?.trim();
-
-  if (name && name !== 'not provided') leadData.name = name;
-  if (phone && phone !== 'not provided') leadData.phone = phone;
-  if (email && email !== 'not provided') leadData.email = email;
-  if (service) leadData.service = service;
-
-  // Check if we have enough to fire the webhook
-  if (!leadCaptured && leadData.name && (leadData.phone || leadData.email) && leadData.service) {
-    sendLead();
-  }
-}
-
-// ── also extract name from user messages ──────────────
-function checkUserMessageForName(text) {
-  if (!leadData.name) {
-    const n = extractName(text);
-    if (n) leadData.name = n;
-  }
-}
-
-// ── send lead to Make.com ──────────────────────────────
-async function sendLead() {
-  if (leadCaptured) return;
-  leadCaptured = true;
-
-  // Eastern Time formatted date
-  const now = new Date();
-  const etDate = now.toLocaleString('en-US', {
-    timeZone: 'America/New_York',
-    month:  '2-digit',
-    day:    '2-digit',
-    year:   'numeric',
-    hour:   '2-digit',
-    minute: '2-digit',
-    hour12: true
-  });
-
-  // Build a clean conversation summary (max 2000 chars)
-  const fullConvo = chatHistory
-    .map(m => `${m.role === 'user' ? 'Customer' : 'Sofia'}: ${m.content.replace(/\*\*Name:\*\*[\s\S]*$/, '').trim()}`)
-    .join('\n');
-  const message = fullConvo.length > 2000 ? fullConvo.slice(0, 1997) + '…' : fullConvo;
-
-  const payload = {
-    date:    etDate,
-    name:    leadData.name    || 'Unknown',
-    phone:   leadData.phone   || '',
-    email:   leadData.email   || '',
-    service: leadData.service || '',
-    message: message
-  };
-
-  try {
-    await fetch(MAKE_WEBHOOK, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-  } catch (err) {
-    console.error('Lead webhook error:', err);
-  }
-}
-
-// ── main send function ─────────────────────────────────
-async function sendMessage() {
-  const text = chatInput.value.trim();
-  if (!text) return;
-
-  chatInput.value = '';
-  chatInput.style.height = 'auto';
-
-  // Check user message for name clues
-  checkUserMessageForName(text);
-
-  addMsg('user', text);
-  chatHistory.push({ role: 'user', content: text });
-
-  // Typing indicator
-  const typing = addMsg('assistant', '…');
-  typing.classList.add('typing');
-
-  try {
-    const res = await fetch('/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        system:   SOFIA_SYSTEM,
-        messages: chatHistory
-      })
-    });
-
-    const data = await res.json();
-    typing.remove();
-
-    if (data.error) throw new Error(data.error);
-
-    const reply = data.content?.[0]?.text || 'Sorry, I had trouble responding. Please call us at (904) 932-9591.';
-
-    // Extract lead data from Sofia's reply (may contain structured block)
-    parseLead(reply);
-
-    addMsg('assistant', reply);
-    chatHistory.push({ role: 'assistant', content: reply });
-
-  } catch (err) {
-    typing.remove();
-    addMsg('assistant', 'I\'m having a technical issue right now. Please call us directly at (904) 932-9591 and a specialist will help you!');
-    console.error('Chat error:', err);
-  }
-}
+function handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();}}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,100)+'px';}
 </script>
 </body>
 </html>
