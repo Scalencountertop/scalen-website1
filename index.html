@@ -507,16 +507,18 @@ function tryCaptureLead(){
   console.log("LEAD DEBUG - phone:"+phone+" email:"+email+" name:"+name);
   if(!phone&&!email){console.log("LEAD: sem phone e email, abortando");return;}
 
-  // nome — multiplos padroes
+  // nome — prioridade: resumo da Sofia, depois frases do usuario
   var name='';
   var namePatterns=[
+    /\*\*Name:\*\*\s*([A-Za-z]+(?:\s+[A-Za-z]+)?)/,
+    /- \*\*Name:\*\*\s*([A-Za-z]+(?:\s+[A-Za-z]+)?)/,
     /(?:name is|I(?:'m| am)|call me|this is)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)/,
     /(?:meet you|speaking with|talking to)[,\s]+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)/i,
-    /^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)[\s,!]/m
+    /my name['s\s]+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)/i
   ];
   for(var i=0;i<namePatterns.length;i++){
     var m=full.match(namePatterns[i]);
-    if(m&&m[1]){name=m[1].trim();break;}
+    if(m&&m[1]&&m[1].toLowerCase()!=='thanks'&&m[1].toLowerCase()!=='hi'&&m[1].toLowerCase()!=='yes'&&m[1].toLowerCase()!=='no'){name=m[1].trim();break;}
   }
 
   // servico
