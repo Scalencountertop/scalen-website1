@@ -491,22 +491,37 @@ function removeTyping(){var t=document.getElementById('typingIndicator');if(t)t.
 
 function tryCaptureLead(reply){
   var lower=reply.toLowerCase();
-  var isConfirmation=lower.indexOf('1 business day')>-1||lower.indexOf('team will')>-1||lower.indexOf('reach out')>-1||lower.indexOf('our team')>-1;
+  var isConfirmation=lower.indexOf('1 business day')>-1||lower.indexOf('team will')>-1||lower.indexOf('reach out')>-1||lower.indexOf('our team')>-1||lower.indexOf('within')>-1;
   if(!isConfirmation)return;
-  var full=chatHistory.map(function(m){return m.content;}).join(' ');
-  var nameMatch=full.match(/(?:name is|my name(?:'s| is)|I(?:'m| am)|call me|this is|meet)\s+([A-Za-z]+(?:\s+[A-Za-z]+)?)/i)||full.match(/\bName:\*?\*?\s*([A-Za-z]+(?:\s+[A-Za-z]+)?)/i);
-  var phoneMatch=full.match(/\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/);
-  var emailMatch=full.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
-  var serviceMatch=full.match(/(?:kitchen|bathroom|countertop|remodel|granite|marble|quartz|quartzite|porcelain|outdoor|commercial|cabinet|tile|tub|vanity)/i);
-  var name=nameMatch?nameMatch[1].trim():'';
-  var phone=phoneMatch?phoneMatch[0]:'';
-  var email=emailMatch?emailMatch[0]:'';
-  var service=serviceMatch?serviceMatch[0]:'';
-  if(!name&&!phone&&!email)return;
+  var full=chatHistory.map(function(m){return m.content;}).join('\n');
+
+  var name='';
+  var namePatterns=[
+    /\*\*Name:\*\*\s*([A-Za-z]+(?:\s+[A-Za-z]+)?)/i,
+    /Name:\s*([A-Za-z]+(?:\s+[A-Za-z]+)?)/i,
+    /meet you,\s*\*?\*?([A-Za-z]+)/i,
+    /(?:name is|I(?:'m| am)|call me|this is)\s+([A-Za-z]+(?:\s+[A-Za-z]+)?)/i
+  ];
+  for(var i=0;i<namePatterns.length;i++){var m=full.match(namePatterns[i]);if(m&&m[1]){name=m[1].trim();break;}}
+
+  var phoneMatch=full.match(/\*\*Phone:\*\*\s*([\d\s\-\(\)\.]+)/i)||full.match(/\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/);
+  var phone=phoneMatch?(phoneMatch[1]?phoneMatch[1].trim():phoneMatch[0]):'';
+
+  var emailMatch=full.match(/\*\*Email:\*\*\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/i)||full.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
+  var email=emailMatch?(emailMatch[1]?emailMatch[1].trim():emailMatch[0]):'';
+
+  var serviceMatch=full.match(/\*\*Service:\*\*\s*([^\n\*]+)/i)||full.match(/(?:kitchen|bathroom|countertop|remodel|granite|marble|quartz|quartzite|porcelain|outdoor|commercial|cabinet|tile|tub|vanity)/i);
+  var service=serviceMatch?(serviceMatch[1]?serviceMatch[1].trim():serviceMatch[0]):'';
+
+  if(!phone&&!email)return;
+
+  var now=new Date();
+  var etDate=now.toLocaleString('en-US',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:true});
+
   fetch(MAKE_WEBHOOK,{
     method:'POST',
     headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({name:name,phone:phone,email:email,service:service,message:full.slice(0,2000),date:new Date().toISOString()})
+    body:JSON.stringify({name:name,phone:phone,email:email,service:service,message:full.slice(0,2000),date:etDate})
   }).catch(function(){});
 }
 
