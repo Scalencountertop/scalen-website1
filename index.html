@@ -545,6 +545,7 @@ async function sendMessage(){
     const reply=data.content&&data.content[0]?data.content[0].text:'I apologize, I had a technical issue. Please try again in a moment.';
     removeTyping();addSofiaMsg(reply);
     chatHistory.push({role:'assistant',content:reply});
+tryCaptureLead(reply);
   }catch(e){
     removeTyping();
     addSofiaMsg('I apologize for the trouble. Our team will be happy to help — please try again in a moment.');
