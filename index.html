@@ -504,7 +504,8 @@ function tryCaptureLead(){
   var email=emailMatch?emailMatch[0].trim():'';
 
   // precisa de pelo menos phone ou email
-  if(!phone&&!email)return;
+  console.log("LEAD DEBUG - phone:"+phone+" email:"+email+" name:"+name);
+  if(!phone&&!email){console.log("LEAD: sem phone e email, abortando");return;}
 
   // nome — multiplos padroes
   var name='';
@@ -547,7 +548,7 @@ function tryCaptureLead(){
       service:service,
       message:full.slice(0,2000)
     })
-  }).catch(function(){});
+  }).then(function(r){console.log("WEBHOOK OK:",r.status);}).catch(function(e){console.log("WEBHOOK ERRO:",e);});
 }
 
 async function sendMessage(){
