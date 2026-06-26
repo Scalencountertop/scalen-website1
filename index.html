@@ -449,103 +449,86 @@ footer{background:#080808;border-top:1px solid rgba(201,168,76,0.2);padding:60px
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
 document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open')));
 
-let chatOpen=false,chatHistory=[],isTyping=false;
+var chatOpen=false,chatHistory=[],isTyping=false;
+var MAKE_WEBHOOK='https://hook.us2.make.com/9f7kx6i2u5epbigsszewi5oclatkyycn';
 
-const SYSTEM_PROMPT=`You are Sofia, a warm and professional virtual assistant for Scalen Countertops, a custom countertop and full kitchen/bathroom remodeling company based in Jacksonville, Florida.
-
-YOUR ROLE: Answer questions about services and materials, collect leads, and schedule FREE in-home estimates.
-
-SERVICES WE OFFER:
-- Granite, Marble, Quartz, Quartzite, Porcelain countertops
-- Removal of old countertops
-- Kitchen remodeling (full scope)
-- Bathroom remodeling (full scope)
-- Outdoor kitchens and fireplace surrounds
-- Commercial projects
-
-KITCHEN REMODEL - FULL SCOPE includes: countertops, cabinet installation and refacing, backsplash tile, painting, layout changes, sink and faucet installation, flooring, plumbing (licensed contractors), electrical (licensed contractors).
-
-BATHROOM REMODEL - FULL SCOPE includes: countertops, vanities, tub replacement, tile shower installation, backsplash tile, cabinet installation, painting, layout changes, sink and faucet installation, flooring, plumbing (licensed contractors), electrical (licensed contractors).
-
-ALWAYS ANSWER YES to: cabinets, tile shower, tub, backsplash, painting, plumbing, electrical, flooring, sink, faucet — these are all part of our remodel service. For plumbing and electrical say "we work with licensed contractors who are part of our team."
-
-MATERIALS:
-- Granite: natural stone, very durable, heat resistant, unique patterns
-- Marble: natural stone, elegant, softer, popular for bathrooms
-- Quartz: engineered stone, non-porous, low maintenance, consistent look
-- Quartzite: natural stone (NOT the same as quartz), harder than marble, marble-like beauty but more durable, heat resistant
-- Porcelain: ultra-thin, UV resistant, great for outdoor
-
-SERVICE AREA: Up to 200 miles from Jacksonville FL — St. Augustine, Gainesville, Ocala, Daytona Beach, Orlando, Palm Coast, Lake City, Tallahassee, parts of Georgia. Miami, Tampa, Key West are outside our area.
-
-PRICING: Never quote prices. Say pricing depends on size, scope and materials — that is exactly why the free in-home estimate exists.
-
-SCHEDULING: To book a free estimate collect naturally (1-2 items at a time): full name, phone, email, service needed, preferred date/time, city and zip code.
-
-LEAD RETENTION - CRITICAL RULE:
-- NEVER say "call us at..." or "email us at..." or "contact our team directly"
-- When you cannot answer something or need team input, ALWAYS collect the customer info first
-- Say: "Great question! Let me make sure our team gets back to you with the best answer. Can I get your name and best phone number or email?"
-- Collect: full name, phone, email, and what they need
-- End with: "Perfect! Our team will reach out within 1 business day."
-- NO lead is ever lost — every visitor is a potential customer
-
-TONE: Warm, professional, concise. Never say you are an AI unless directly asked. If asked, say "I am Sofia, Scalen Countertops virtual assistant."`;
+var SYSTEM_PROMPT='You are Sofia, a warm and professional virtual assistant for Scalen Countertops, a custom countertop and full kitchen/bathroom remodeling company based in Jacksonville, Florida.\n\nYOUR ROLE: Answer questions about services and materials, collect leads, and schedule FREE in-home estimates.\n\nSERVICES WE OFFER:\n- Granite, Marble, Quartz, Quartzite, Porcelain countertops\n- Removal of old countertops\n- Kitchen remodeling (full scope)\n- Bathroom remodeling (full scope)\n- Outdoor kitchens and fireplace surrounds\n- Commercial projects\n\nKITCHEN REMODEL - FULL SCOPE includes: countertops, cabinet installation and refacing, backsplash tile, painting, layout changes, sink and faucet installation, flooring, plumbing (licensed contractors), electrical (licensed contractors).\n\nBATHROOM REMODEL - FULL SCOPE includes: countertops, vanities, tub replacement, tile shower installation, backsplash tile, cabinet installation, painting, layout changes, sink and faucet installation, flooring, plumbing (licensed contractors), electrical (licensed contractors).\n\nALWAYS ANSWER YES to: cabinets, tile shower, tub, backsplash, painting, plumbing, electrical, flooring, sink, faucet. For plumbing and electrical say we work with licensed contractors who are part of our team.\n\nMATERIALS:\n- Granite: natural stone, very durable, heat resistant, unique patterns\n- Marble: natural stone, elegant, softer, popular for bathrooms\n- Quartz: engineered stone, non-porous, low maintenance, consistent look\n- Quartzite: natural stone NOT the same as quartz, harder than marble, marble-like beauty but more durable, heat resistant\n- Porcelain: ultra-thin, UV resistant, great for outdoor\n\nSERVICE AREA: Up to 200 miles from Jacksonville FL including St. Augustine, Gainesville, Ocala, Daytona Beach, Orlando, Palm Coast, Lake City, Tallahassee, parts of Georgia. Miami, Tampa, Key West are outside our area.\n\nPRICING: Never quote prices. Say pricing depends on size, scope and materials, that is exactly why the free in-home estimate exists.\n\nSCHEDULING: To book a free estimate collect naturally 1-2 items at a time: full name, phone, email, service needed, preferred date and time, city and zip code.\n\nLEAD RETENTION - CRITICAL RULE:\n- NEVER say call us at or email us at or contact our team directly\n- When you cannot answer something or need team input, ALWAYS collect the customer info first\n- Say: Great question! Let me make sure our team gets back to you with the best answer. Can I get your name and best phone number or email?\n- Collect: full name, phone, email, and what they need\n- End with: Perfect! Our team will reach out within 1 business day.\n- NO lead is ever lost\n\nTONE: Warm, professional, concise. Never say you are an AI unless directly asked. If asked say I am Sofia, Scalen Countertops virtual assistant.';
 
 function toggleChat(){
   chatOpen=!chatOpen;
   document.getElementById('chatWindow').classList.toggle('open',chatOpen);
   document.querySelector('.chat-badge').style.display='none';
   if(chatOpen&&chatHistory.length===0){
-    setTimeout(()=>addSofiaMsg("Hi! I'm Sofia, Scalen Countertops' virtual assistant. 👋 Are you looking to schedule a free estimate, or do you have questions about our countertops or remodeling services?"),400);
+    setTimeout(function(){addSofiaMsg("Hi! I'm Sofia, Scalen Countertops' virtual assistant. 👋 Are you looking to schedule a free estimate, or do you have questions about our countertops or remodeling services?");},400);
   }
-  if(chatOpen)setTimeout(()=>document.getElementById('chatInput').focus(),300);
+  if(chatOpen)setTimeout(function(){document.getElementById('chatInput').focus();},300);
 }
 
 function addSofiaMsg(text){
-  const msgs=document.getElementById('chatMessages');
-  const div=document.createElement('div');div.className='msg sofia';
-  const now=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  var msgs=document.getElementById('chatMessages');
+  var div=document.createElement('div');div.className='msg sofia';
+  var now=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
   div.innerHTML='<div class="msg-bubble">'+text+'</div><div class="msg-time">'+now+'</div>';
   msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
 }
 
 function addUserMsg(text){
-  const msgs=document.getElementById('chatMessages');
-  const div=document.createElement('div');div.className='msg user';
-  const now=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  var msgs=document.getElementById('chatMessages');
+  var div=document.createElement('div');div.className='msg user';
+  var now=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
   div.innerHTML='<div class="msg-bubble">'+text+'</div><div class="msg-time">'+now+'</div>';
   msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
 }
 
 function showTyping(){
-  const msgs=document.getElementById('chatMessages');
-  const div=document.createElement('div');div.className='msg sofia';div.id='typingIndicator';
+  var msgs=document.getElementById('chatMessages');
+  var div=document.createElement('div');div.className='msg sofia';div.id='typingIndicator';
   div.innerHTML='<div class="typing"><span></span><span></span><span></span></div>';
   msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;
 }
 
-function removeTyping(){const t=document.getElementById('typingIndicator');if(t)t.remove();}
+function removeTyping(){var t=document.getElementById('typingIndicator');if(t)t.remove();}
+
+function tryCaptureLead(reply){
+  var lower=reply.toLowerCase();
+  var isConfirmation=lower.indexOf('1 business day')>-1||lower.indexOf('team will')>-1||lower.indexOf('reach out')>-1||lower.indexOf('our team')>-1;
+  if(!isConfirmation)return;
+  var full=chatHistory.map(function(m){return m.content;}).join(' ');
+  var nameMatch=full.match(/(?:name is|I(?:'| a)m|call me)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)/i);
+  var phoneMatch=full.match(/\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/);
+  var emailMatch=full.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
+  var serviceMatch=full.match(/(?:kitchen|bathroom|countertop|remodel|granite|marble|quartz|quartzite|porcelain|outdoor|commercial)/i);
+  var name=nameMatch?nameMatch[1]:'';
+  var phone=phoneMatch?phoneMatch[0]:'';
+  var email=emailMatch?emailMatch[0]:'';
+  var service=serviceMatch?serviceMatch[0]:'';
+  if(!name&&!phone&&!email)return;
+  fetch(MAKE_WEBHOOK,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({name:name,phone:phone,email:email,service:service,message:full.slice(0,500),date:new Date().toISOString()})
+  }).catch(function(){});
+}
 
 async function sendMessage(){
-  const input=document.getElementById('chatInput');
-  const text=input.value.trim();
+  var input=document.getElementById('chatInput');
+  var text=input.value.trim();
   if(!text||isTyping)return;
   input.value='';input.style.height='auto';
   addUserMsg(text);
   chatHistory.push({role:'user',content:text});
   isTyping=true;showTyping();
   try{
-    const res=await fetch('/api/chat',{
+    var res=await fetch('/api/chat',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:SYSTEM_PROMPT,messages:chatHistory})
     });
-    const data=await res.json();
-    const reply=data.content&&data.content[0]?data.content[0].text:'I apologize, I had a technical issue. Please try again in a moment.';
+    var data=await res.json();
+    var reply=data.content&&data.content[0]?data.content[0].text:'I apologize, I had a technical issue. Please try again in a moment.';
     removeTyping();addSofiaMsg(reply);
     chatHistory.push({role:'assistant',content:reply});
-tryCaptureLead(reply);
+    tryCaptureLead(reply);
   }catch(e){
     removeTyping();
     addSofiaMsg('I apologize for the trouble. Our team will be happy to help — please try again in a moment.');
