@@ -73,7 +73,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;display:flex;al
 .materials-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-top:60px}
 .material-card{padding:44px 24px;text-align:center;border:1px solid rgba(201,168,76,0.12);transition:.3s}
 .material-card:hover{border-color:var(--gold);background:rgba(201,168,76,0.04)}
-.material-icon{font-size:26px;margin-bottom:16px}
+.material-icon{
+  width:52px;height:52px;
+  border:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 18px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:400;
+  color:var(--gold);
+  letter-spacing:.04em;
+}
 .material-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;margin-bottom:10px}
 .material-desc{font-size:12px;color:var(--gray);line-height:1.65}
 .process{padding:100px 5%;background:#080808}
@@ -306,11 +315,11 @@ footer{background:#080808;border-top:1px solid rgba(201,168,76,0.2);padding:60px
     <h2 class="section-title">Every stone, <em>every style</em></h2>
   </div>
   <div class="materials-grid">
-    <div class="material-card"><div class="material-icon">🪨</div><div class="material-name">Granite</div><div class="material-desc">Natural durability with unique veining. Heat and scratch resistant.</div></div>
-    <div class="material-card"><div class="material-icon">💎</div><div class="material-name">Quartz</div><div class="material-desc">Engineered for consistency. Low maintenance, high performance.</div></div>
-    <div class="material-card"><div class="material-icon">🌿</div><div class="material-name">Quartzite</div><div class="material-desc">Natural stone with marble-like beauty and granite-like strength.</div></div>
-    <div class="material-card"><div class="material-icon">⬜</div><div class="material-name">Marble</div><div class="material-desc">Timeless elegance. Unique movement and texture in every slab.</div></div>
-    <div class="material-card"><div class="material-icon">🔲</div><div class="material-name">Porcelain</div><div class="material-desc">Ultra-thin, UV resistant. Perfect for outdoor applications.</div></div>
+    <div class="material-card"><div class="material-icon">G</div><div class="material-name">Granite</div><div class="material-desc">Natural durability with unique veining. Heat and scratch resistant.</div></div>
+    <div class="material-card"><div class="material-icon">Q</div><div class="material-name">Quartz</div><div class="material-desc">Engineered for consistency. Low maintenance, high performance.</div></div>
+    <div class="material-card"><div class="material-icon">Qz</div><div class="material-name">Quartzite</div><div class="material-desc">Natural stone with marble-like beauty and granite-like strength.</div></div>
+    <div class="material-card"><div class="material-icon">M</div><div class="material-name">Marble</div><div class="material-desc">Timeless elegance. Unique movement and texture in every slab.</div></div>
+    <div class="material-card"><div class="material-icon">P</div><div class="material-name">Porcelain</div><div class="material-desc">Ultra-thin, UV resistant. Perfect for outdoor applications.</div></div>
   </div>
 </section>
 
